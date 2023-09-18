@@ -1,17 +1,21 @@
 /* eslint-disable prettier/prettier */
 import React, { useState, useEffect } from 'react';
-import { ScrollView, StyleSheet, View, ActivityIndicator } from 'react-native';
+import { ScrollView, StyleSheet, View, ActivityIndicator, Alert } from 'react-native';
 import { Avatar, Searchbar, Button, Text } from 'react-native-paper';
 //import { Picker } from '@react-native-picker/picker';
-import MyProducto from '../component/producto';
+
+import MyProducto from './producto';
 import axios from 'axios';
 import { Pages } from 'react-native-pages';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const LeftContent = props => <Avatar.Icon {...props} icon="folder" />
 
+global.url = "https://consume.hidalgo.gob.mx/API/public/index.php/";
 const Productos = ({ navigation }) => {
 
+ 
+  
     const [categorias, setCategorias] = useState([]);
     const [municipios, setMunicipios] = useState([]);
     const [searchQuery, setSearchQuery] = React.useState('');
@@ -20,27 +24,84 @@ const Productos = ({ navigation }) => {
     const [selectedLanguage, setSelectedLanguage] = useState('');
     const [idstore, setidstore] = React.useState(0);
 
-   
+    const [token, setToken] = useState(null);
+  
+    
+    
+      useEffect(() => {
+        const getToken = async () => {
+            try {
+              const storedToken = await AsyncStorage.getItem('@token');
+              if (storedToken !== null) {
+             
+                setToken(storedToken);
+              }
+            } catch (error) {
+              console.error('Error al obtener el token:', error);
+            }
+          };
+      
+          getToken();
 
+ 
+            consCategorias();
+            consMunicipios();
+            consProductos();
+
+
+   
+    }, []);
+
+    
+
+   
+ 
     const [dataTarjeta, setTarjeta] = useState([]);
     const [buscando, setBuscando] = useState(true);
 
-    useEffect(() => {
-        consCategorias();
-        consMunicipios();
-        consProductos();
-    }, []);
+  
+    const consCategorias = async () => {
+
+        const storedToken = await AsyncStorage.getItem('@token');
+        const url = global.url + "categorias/";
+
+        try {
+
+   
+            let headers = {
+                'Content-Type': 'application/json',
+                  'Authorization': `Bearer ${storedToken}`
+                }
+            const resCat = await axios.post(url, { tipo: 1 },  {
+                headers: headers
+              } );
+ 
+
+            setCategorias(resCat.data);
+        } catch (error) {
+      
+            //Estrategia de cache
+        }
+    }
 
  
-  
-
     const consProductos = async () => {
+
+        const storedToken = await AsyncStorage.getItem('@token');
+        let headers = {
+            'Content-Type': 'application/json',
+              'Authorization': `Bearer ${storedToken}`
+            }
+
+
         let data = {origen: Platform.OS === 'ios' ? 2 : 1, id_user : idstore};
         setTarjeta([]);
         setBuscando(true);
         const url = global.url + "busqueda/";
         try {
-            const resPro = await axios.post(url, { tipo: 1, buscar:searchQuery, categoria:selectedCategoria,  municipio:selectedLanguage });
+            const resPro = await axios.post(url, { tipo: 1, buscar:searchQuery, categoria:selectedCategoria,  municipio:selectedLanguage }, {
+                headers: headers
+              });
             setTarjeta(resPro.data);
             setBuscando(false);
             const id =global.id;
@@ -51,20 +112,21 @@ const Productos = ({ navigation }) => {
         }
     }
 
-    const consCategorias = async () => {
-        const url = global.url + "categorias/";
-        try {
-            const resCat = await axios.post(url, { tipo: 1 });
-            setCategorias(resCat.data);
-        } catch (error) {
-            //Estrategia de cache
-        }
-    }
-
+   
     const consMunicipiosOP = async (itemValue) => {
+        
+        const storedToken = await AsyncStorage.getItem('@token');
+
         const url = global.url + "municipiosOperacion/";        
         try {
-            const resMunOp = await axios.post(url, {idcategoria:itemValue});
+            let headers = {
+                'Content-Type': 'application/json',
+                  'Authorization': `Bearer ${storedToken}`
+                }
+
+            const resMunOp = await axios.post(url, {idcategoria:itemValue}, {
+                headers: headers
+              });
             setMunicipios(resMunOp.data);
             setSelectedLanguage("");            
         } catch (error) {
@@ -74,9 +136,18 @@ const Productos = ({ navigation }) => {
     }  
 
     const consMunicipios = async () => {
+        
+        const storedToken = await AsyncStorage.getItem('@token');
         const url = global.url + "municipios/";
         try {
-            const resMun = await axios.post(url);
+            let headers = {
+                'Content-Type': 'application/json',
+                  'Authorization': `Bearer ${storedToken}`
+                }
+ 
+            const resMun = await axios.post(url, {
+                headers: headers
+              });
             setMunicipios(resMun.data);
         } catch (error) {
             //Estrategia de cache
@@ -94,16 +165,21 @@ const Productos = ({ navigation }) => {
                 />
                 <View >
 
-                    {/* <View style={[styles.box]}>
-                        <Picker selectedValue={selectedCategoria} onValueChange={(itemValue, itemIndex) => { setSelectedCategoria(itemValue); consMunicipiosOP(itemValue); }}>
+                  <View style={[styles.box]}>
+                  {categorias.map(categ => (
+                                <Text>{categ.nombre_categoria}</Text>
+                            ))
+                  
+                  }
+                        {/* <Picker selectedValue={selectedCategoria} onValueChange={(itemValue, itemIndex) => { setSelectedCategoria(itemValue); consMunicipiosOP(itemValue); }}>
                             <Picker.Item style={{ color: '#620C31' }} label="Todas las Categorias" value="" />
                             {categorias.map(categ => (
                                 <Picker.Item style={{ color: '#620C31' }} key={categ.id_categoria} label={categ.nombre_categoria} value={categ.id_categoria} />
                             ))
                             }
-                        </Picker>
+                        </Picker> */}
                     </View>
-
+   {/*
                     <View style={[styles.box]}>                        
                         <Picker selectedValue={selectedLanguage} onValueChange={(itemValue, itemIndex) => setSelectedLanguage(itemValue)}>
                             <Picker.Item style={{ color: '#620C31' }} label="Todo el estado" value="" />

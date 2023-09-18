@@ -94,7 +94,7 @@ const MyCard = (props) => {
                         <View style={styles.modalView}>                            
                             {logops ==='https://dev.upmh.edu.mx/consumeHidalgo/logo_negocio/'?
                             <View>
-                                <Avatar.Image  marginVertical='3%' size={190} source={require('../../assets/img/sin_logo.png')}
+                                <Avatar.Image  marginVertical='3%' size={190} source={require('../../../../assets/img/sin_logo.png')}
                                 />
                             </View>
                                 :

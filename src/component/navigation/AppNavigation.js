@@ -3,7 +3,9 @@ import { Button, View, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-
+import Inicio from './Usuario/Inicio';
+import Producto from './Usuario/producto';
+import Productos from './Usuario/productos';
 function EmptyScreen() {
   return <View />;
 }
@@ -22,8 +24,8 @@ const Stack = createNativeStackNavigator();
 function Root() {
   return (
     <Drawer.Navigator >
-      <Drawer.Screen name="Iniciooo" component={Home} />
-      <Drawer.Screen name="Profile" component={EmptyScreen} />
+      <Drawer.Screen name="Inicio" component={Inicio} />
+      <Drawer.Screen name="Productos" component={Productos} />
       <Stack.Screen name="Settings" component={EmptyScreen} />
     </Drawer.Navigator>
   );

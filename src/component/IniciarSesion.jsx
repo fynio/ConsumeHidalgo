@@ -66,11 +66,11 @@ const IniciarSesion = ( {navigation})=>{
                     await setToken(JSON.stringify(response.data.token));
     
                     await AsyncStorage.setItem('@id_tipo_usuario', JSON.stringify(response.data.id_tipo_usuario));
-                    await  AsyncStorage.setItem('@token', JSON.stringify(response.data.token));
+                    await  AsyncStorage.setItem('@token', JSON.stringify(response.data.token).replace(/['"]+/g, ''));
                 
                     if(JSON.stringify(response.data.id_tipo_usuario==2))
                     {
-                        navigation.navigate("Registrarme");
+                        navigation.navigate("AppNavigation");
                      
                      
                     }else{

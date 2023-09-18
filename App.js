@@ -8,7 +8,7 @@ import {Button, TextInput, Text, View, Image, TouchableOpacity} from 'react-nati
 import IniciarSesion from './src/component/IniciarSesion';
 import Registrarme from './src/component/Registrarme'; 
 
- import AppNavigation from './app/navigation/AppNavigation';
+ import AppNavigation from './src/component/navigation/AppNavigation';
 //import AdminNavigation from './app/navigation/AdminNavigation';
 
 
@@ -33,10 +33,10 @@ const App = () =>{
       <NavigationContainer independent={true}>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
  
-      <Stack.Screen name="AppNavigation" component={AppNavigation} /> 
       <Stack.Screen name="IniciarSesion" component={IniciarSesion} />
         <Stack.Screen name="Registrarme" component={Registrarme} />
 
+        <Stack.Screen name="AppNavigation" component={AppNavigation} /> 
          {/*    <Stack.Screen name="AdminNavigation" component={AdminNavigation} /> */}
 
        {/* <Stack.Screen name="AdminNavigation" component={AdminNavigation} />

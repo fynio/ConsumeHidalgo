@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react'; 
-import Bolsa from '../component/bolsa';
+import Bolsa from '../../bolsa';
 import { Button } from 'react-native-paper';
 
 import {
@@ -73,36 +73,35 @@ const styles = StyleSheet.create({
     fontSize:15,
     lineHeight:21,
     textAlign:'justify',
-    color:'#000',
-    fontFamily:'Roboto-Regular'
+    color:'#000'
   },
   cabecera:{
     marginHorizontal:'5%',
     marginVertical:'4%',
-    fontSize: 28, color: '#BC945B', letterSpacing: 1, fontFamily:'Izmir-Heavy',
+    fontSize: 28, color: '#BC945B', letterSpacing: 1
   },
   cabecera2:{
     marginHorizontal:'5%',
     marginVertical:'4%',
-    fontSize: 28, color: '#BC945B', letterSpacing: 1, fontFamily:'Izmir-Heavy',    
+    fontSize: 28, color: '#BC945B', letterSpacing: 1
   },
 azul:{
   marginHorizontal:'5%',
     marginVertical:'4%',
-    fontSize: 28, color: '#620C31', letterSpacing: 1, fontFamily:'Izmir-Heavy'
+    fontSize: 28, color: '#620C31', letterSpacing: 1
 },
 azulProductos:{
   marginTop:'-2%',
   marginHorizontal:'5%',
   marginVertical:'4%',
-  fontSize:20, color: '#620C31', letterSpacing: 1, fontFamily:'Izmir-Heavy'
+  fontSize:20, color: '#620C31', letterSpacing: 1
 },
 
 azulServicios:{
   marginTop:'2%',
   marginHorizontal:'5%',
   marginVertical:'4%',
-  fontSize:20, color: '#620C31', letterSpacing: 1, fontFamily:'Izmir-Heavy'
+  fontSize:20, color: '#620C31', letterSpacing: 1
 },
 rowEnd: {
   marginTop:'3%',
@@ -142,7 +141,6 @@ rowEnd: {
     marginTop:'6%',
   },
   TextoBoton:{
-    fontFamily:'Izmir-Heavy',
     color:'white',
   },
 
