@@ -16,7 +16,7 @@ global.url = "https://consume.hidalgo.gob.mx/API/public/index.php/";
 const IniciarSesion = ( {navigation})=>{
 
     const [escribe, setEscribe] = React.useState(false);
-    const [correo, setCorreo] = React.useState('rodrigogarciatrejo89@gmail.com');
+    const [correo, setCorreo] = React.useState('admin@gmail.com');
     const [password, setPassword] = React.useState('1');
 
 
@@ -55,7 +55,9 @@ const IniciarSesion = ( {navigation})=>{
     
          
             const response = await axios.post( global.url + 'login/', DATOS);
+      
         
+
             if(response.status==200){
       
                 
@@ -73,8 +75,12 @@ const IniciarSesion = ( {navigation})=>{
                         navigation.navigate("AppNavigation");
                      
                      
-                    }else{
-                        Alert.alert("ENTRO aquie");
+                    }
+                    if(JSON.stringify(response.data.id_tipo_usuario==1))
+                    {
+                        navigation.navigate("AdminNavigation");
+                     
+                     
                     }
 
                 }

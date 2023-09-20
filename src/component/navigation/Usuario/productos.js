@@ -134,6 +134,12 @@ const Productos = ({ navigation }) => {
               });
               
             setBuscando(false);
+
+
+
+
+
+            
             setTarjeta(resPro.data);
         } catch (error) {
             

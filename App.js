@@ -10,6 +10,7 @@ import Principal from './src/component/Principal';
 import Registrarme from './src/component/Registrarme'; 
 
  import AppNavigation from './src/component/navigation/AppNavigation';
+ import AdminNavigation from './src/component/navigation/AdminNavigation';
 //import AdminNavigation from './app/navigation/AdminNavigation';
 
 
@@ -19,8 +20,6 @@ const Option2 = () => <View><Text>Opción 2</Text></View>;
 const Menu = () => <View><Text>Menú</Text><Text>Menú</Text><Text>Menú</Text><Text>Menú</Text><Text>Menú</Text><Text>Menú</Text><Text>Menú</Text><Text>Menú</Text></View>;
 
 // import Acceso from './views/acceso';
-// import AppNavigation from './app/navigation/AppNavigation';
-// import AdminNavigation from './app/navigation/AdminNavigation';
 // import Registrar from './views/registrar';
 // import Password from './views/password';
 
@@ -39,7 +38,7 @@ const App = () =>{
           <Stack.Screen name="Registrarme" component={Registrarme} />
 
           <Stack.Screen name="AppNavigation" component={AppNavigation} /> 
-          {/*    <Stack.Screen name="AdminNavigation" component={AdminNavigation} /> */}
+           <Stack.Screen name="AdminNavigation" component={AdminNavigation} />
 
         {/* <Stack.Screen name="AdminNavigation" component={AdminNavigation} />
           <Stack.Screen name="Registrar" component={Registrar} />

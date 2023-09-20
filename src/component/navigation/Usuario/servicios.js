@@ -67,7 +67,7 @@ const Productos = ({ navigation }) => {
         const url = global.url + "categorias/";
 
         try {
-            const resCat = await axios.post(url, { tipo: 1 },  {
+            const resCat = await axios.post(url, { tipo: 2 },  {
                 headers: {
                 'Content-Type': 'application/json',
                   'Authorization': `Bearer ${storedToken}`
@@ -149,7 +149,7 @@ const Productos = ({ navigation }) => {
 
             {/* inicio de searchbar y pickers */}
             <View style={styles.Header}>
-                <Searchbar placeholder="Buscar Productos"
+                <Searchbar placeholder="Buscar Servicios"
                     onChangeText={onChangeSearch}
                     value={searchQuery}
                 />
