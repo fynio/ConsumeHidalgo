@@ -1,13 +1,15 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import { ScrollView, Linking, Keyboard, TouchableWithoutFeedback, StyleSheet, View, Text, Alert, Platform } from 'react-native';
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import RNRestart from 'react-native-restart';
+import { useNavigation } from '@react-navigation/native';
+const Prueba = (  ) => {    
+  
+  const navigation = useNavigation();
 
-const Prueba = ( {navigation} ) => {    
-  
-  
-  
+
+
     const [state, setSate] = React.useState(false);
     //input text
     const [user, setText] = React.useState('');
@@ -36,9 +38,13 @@ const Prueba = ( {navigation} ) => {
 
     const removeData = async () => {
       try {
+        console.log("Estoy aqui");
         await AsyncStorage.removeItem('@storage_Key');
         setSesione(null);
-        setSate(true);
+        setSate(true); 
+        
+        navigation.navigate('Principal');
+
         RNRestart.Restart();              
       } catch (e) {
         // saving error
@@ -114,6 +120,7 @@ const Prueba = ( {navigation} ) => {
         }
       }
     }
+    
     return (     
       
        <View></View>

@@ -107,6 +107,8 @@ const IniciarSesion = ( {navigation})=>{
 
                     style={{
                         width: Space, 
+                     display:'flex', 
+                     flexDirection:'column', 
                         marginTop:'14%', 
                         justifyContent:'center', 
                         marginHorizontal:'10%'
@@ -114,11 +116,7 @@ const IniciarSesion = ( {navigation})=>{
 
                     <View style={{display:'flex', flexDirection:'column', alignItems:'center'}}>
 
-
-                    <Image
-                    style={styles.topImage}
-                    source = {require('./../../assets/img/logo.png')} 
-                    />
+                        <Text style={styles.tituloText}>Iniciar sesión</Text>
 
                     </View>
                
@@ -152,12 +150,6 @@ const IniciarSesion = ( {navigation})=>{
 
                     <Text></Text>
                     <Text></Text>
-                    <TouchableOpacity onPress={() => Linking.openURL("https://consume.hidalgo.gob.mx/aviso_de_privacidad.php")}>
-                    <Text style={{ textAlign:'right',  color: 'rgba(105, 28, 49, 1)' }}>Aviso de privacidad</Text>
-                    </TouchableOpacity>
-
-                    <Text></Text>
-                    <Text></Text>
                     <Button icon="key" mode="contained" onPress={() =>  iniciarSesionHandler()}>
                     Iniciar sesión
                     </Button>
@@ -167,26 +159,21 @@ const IniciarSesion = ( {navigation})=>{
                     <Button  onPress={() => navigation.navigate('Registrarme')} style={{backgroundColor:'rgba(188,149,91,1)'}} icon="account-plus" mode="contained" >
                     Registrarme
                     </Button> 
-            
 
                     <Text></Text>
                     <Text></Text>
                     <Button 
-                    mode="outlined"
-                    icon="account-plus"  onPress={() => console.log('Pressed')}>
-                    Olvide la contraseña
-                    </Button>
+                        style={{ marginTop: '5%'}}
+                        icon="arrow-left"
+                        mode="contained"                             
+                        onPress={() => navigation.navigate('Principal')}>
+                        Regresar
+                      </Button>
+                              
 
-                    <Text></Text>
-                    <Text></Text>
-                    <TouchableOpacity onPress={() => Linking.openURL("https://consume.hidalgo.gob.mx/dar_de_baja.php")}>
-                    <Button style={{color:'rgb(0,0,255)'}} icon="arrow-down-bold" mode="outlined" >
-                        Darme de baja
-                        </Button> 
-                    </TouchableOpacity>
 
- 
-                  
+                      <Text></Text>
+                    <Text></Text>
 
                     <Text></Text>
                     <Text></Text>
@@ -208,7 +195,10 @@ const IniciarSesion = ( {navigation})=>{
 }
 
 const styles = StyleSheet.create({
-
+    tituloText:{ 
+        marginVertical:'4%',
+        fontSize: 28, color: '#620C31', letterSpacing: 1
+    },
     topImage:{height: 190, width: 120 },
     bottomImage:{height: 80, width: 150 },
     titulo:{marginHorizontal:'2%', alignItems:'center', marginTop:10},

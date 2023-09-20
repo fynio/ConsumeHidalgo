@@ -5,7 +5,10 @@ import { Button, Card, Title, Paragraph, IconButton, Avatar} from 'react-native-
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import {LogBox} from "react-native";
 
- 
+LogBox.ignoreLogs([
+    "ViewPropTypes will be removed",
+    "ColorPropType will be removed",
+    ])
     
 const MyCard = (props) => {
 
@@ -131,6 +134,7 @@ const MyCard = (props) => {
                                         <IconButton
                                             flexDirection='row'
                                             icon="phone"
+                                            color="#007bff"
                                             size={27}
                                             onPress={() => { Linking.openURL('tel:+' + props.masinformacion.tel) }}
                                         />
@@ -144,6 +148,7 @@ const MyCard = (props) => {
                                         <IconButton
                                             flexDirection='row'
                                             icon="whatsapp"
+                                            color="#28a745"
                                             size={35}
                                             onPress={() => Linking.openURL('https://api.whatsapp.com/send?phone=' + props.masinformacion.whatsapp)}
                                         />
@@ -157,7 +162,7 @@ const MyCard = (props) => {
                                         <IconButton
                                             flexDirection='row'
                                             icon="facebook"
-                                            
+                                            color="#007bff"
                                             size={35}
                                             onPress={() => Linking.openURL(props.masinformacion.facebook)}/>
                                     </View>
@@ -170,6 +175,7 @@ const MyCard = (props) => {
                                         <IconButton
                                             flexDirection='row'
                                             icon="instagram"
+                                            color="#F71529"
                                             size={35}
                                             onPress={() => Linking.openURL(inst)}
                                             />
@@ -182,6 +188,7 @@ const MyCard = (props) => {
                                         <IconButton
                                             flexDirection='row'
                                             icon="twitter"
+                                            color="#0DCDE3"
                                             size={35}
                                             onPress={() => Linking.openURL(twit)}
                                             />
@@ -194,6 +201,7 @@ const MyCard = (props) => {
                                         <IconButton
                                             flexDirection='row'
                                             icon="store"
+                                            color="#D4D713"
                                             size={35}
                                             onPress={() => Linking.openURL(myap)}
                                             />
@@ -207,6 +215,7 @@ const MyCard = (props) => {
                                         <IconButton
                                             flexDirection='row'
                                             icon="laptop"
+                                            color="#858580"
                                             size={35}
                                             onPress={() => Linking.openURL(web)}
                                             />
@@ -219,6 +228,7 @@ const MyCard = (props) => {
                                         <IconButton
                                             flexDirection='row'
                                             icon="email"
+                                            color="#F38808"
                                             size={35}
                                             onPress={() => {Linking.openURL('mailto:' + email + '?subject=Consume Hidalgo')}}
                                             />

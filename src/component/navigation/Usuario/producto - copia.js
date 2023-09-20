@@ -3,23 +3,13 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, Image, View, Modal, Pressable, Linking, ScrollView } from 'react-native';
 import { Button, Card, Title, Paragraph, IconButton, Avatar} from 'react-native-paper';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import {LogBox} from "react-native";
 
- 
     
-const MyCard = (props) => {
+const MyCard = () => {
 
     const [modalVisible, setModalVisible] = useState(false);
     
-    const [tel, setTel] = useState(props.masinformacion.tel);
-    const [face, setFace] = useState(props.masinformacion.facebook);
-    const [what, setWhat] = useState(props.masinformacion.whatsapp);
-    const [email, setEmail] = useState(props.masinformacion.email);
-    const [web, setWeb] = useState(props.masinformacion.web);
-    const [inst, setInst] = useState(props.masinformacion.instagram);
-    const [twit, setTwit] = useState(props.masinformacion.twitter);
-    const [myap, setMyap] = useState(props.masinformacion.myapp);
-    const [logops, setLogops] = useState(props.masinformacion.logo);
+
 
     const cargarListado = (dataArray) => {
         const lista_horarios = [];
@@ -37,17 +27,17 @@ const MyCard = (props) => {
             <ScrollView>
             <Card>
                 <Card.Content>
-                <Title style={{ color: '#0080dc', }}>{props.titulo}</Title>
-                    <Paragraph style={{textAlign: 'justify', marginBottom: 10}}>{props.descripcion}</Paragraph>
+                <Title style={{ color: '#0080dc', }}>{titulo}</Title>
+                    <Paragraph style={{textAlign: 'justify', marginBottom: 10}}>{descripcion}</Paragraph>
                      {/* <View style={styles.container}> */}
                             {/* <View style={[styles.box, styles.box1]}> */}
                                 
-                                {props.sucursales.length?
+                                {sucursales.length?
                                     <Text style={{ color: '#0080dc', fontWeight: 'bold', }}>Sucursales:</Text>
                                 :
                                     <View></View>
                                 }                                
-                                {props.sucursales.map((sucursal, i) => {
+                                {sucursales.map((sucursal, i) => {
                                     return(
                                         <Text style={{ color: 'black', fontStyle: 'italic' }} key={'sucursal' + i}>{sucursal}</Text>
                                     );
@@ -55,19 +45,19 @@ const MyCard = (props) => {
                             {/* </View> */}
                             {/* <View style={[styles.box, styles.box2]}> */}
                                 <Text style={{ color: '#0080dc', fontWeight: 'bold', }}>Direccion:</Text>
-                                {props.direcciones.map((direccion, i) => {
+                                {direcciones.map((direccion, i) => {
                                     return(
                                         <Text style={{ color: 'black', fontStyle: 'italic' }} key={'direccion' + i}>{direccion}</Text>
                                     );
                                 })}
 
                                
-                               {props.masinformacion.metodosentrega.length?
+                               {masinformacion.metodosentrega.length?
                                 <Text style={{ color: '#0080dc', fontWeight: 'bold', }}>Métodos de entrega:</Text>
                                 :
                                 <View></View>
                                }                                
-                                {props.masinformacion.metodosentrega.map((entrega, i) => {
+                                {masinformacion.metodosentrega.map((entrega, i) => {
                                     return(
                                         <Text style={{ color: 'black', fontStyle: 'italic' }} key={'entrega' + i}>{entrega}</Text>
                                     );
@@ -96,7 +86,7 @@ const MyCard = (props) => {
                             </View>
                                 :
                             <View>
-                                <Avatar.Image  marginVertical='3%' size={190} source={{ uri: '' + props.masinformacion.logo }}
+                                <Avatar.Image  marginVertical='3%' size={190} source={{ uri: '' + masinformacion.logo }}
                                 />                                
                             </View> 
                             }
@@ -104,8 +94,8 @@ const MyCard = (props) => {
                                 <View style={styles.box}>
                                     <Text style={{ color: '#0080dc', fontWeight: 'bold', }}>Horario de Atención:</Text>
                                     {                                        
-                                         //{cargarListado(props.masinformacion.horario)} 
-                                         props.masinformacion.horario.map((horariod, i) => {
+                                 
+                                         masinformacion.horario.map((horariod, i) => {
                                             return(
                                                 <Text style={styles.horariosModal} key={'texti' + i}>{horariod}</Text>
                                             );
@@ -115,8 +105,7 @@ const MyCard = (props) => {
                                 <View style={styles.box2}>
                                     <Text style={{ color: '#0080dc', fontWeight: 'bold', }}>Métodos de Pago:</Text>
                                     {
-                                        /* {cargarListado(props.masinformacion.metodospago)} */
-                                         props.masinformacion.metodospago.map((metodopago, i) => {
+                                         masinformacion.metodospago.map((metodopago, i) => {
                                             return(
                                                 <Text style={styles.horariosModal} key={'texti' + i}>{metodopago}</Text>
                                             );
@@ -126,101 +115,108 @@ const MyCard = (props) => {
                             </View>
                             <View style={styles.redes}>
                                 
-                                {tel?
+                                {masinformacion.tel?
                                     <View style={[styles.redA]}>
                                         <IconButton
                                             flexDirection='row'
                                             icon="phone"
+                                            color="#007bff"
                                             size={27}
-                                            onPress={() => { Linking.openURL('tel:+' + props.masinformacion.tel) }}
+                                            onPress={() => { Linking.openURL('tel:+' + masinformacion.tel) }}
                                         />
                                     </View>
                                 :
                                     <View></View>
                                 }
 
-                                {what?
+                                {masinformacion.what?
                                     <View style={[styles.red0]}>                                   
                                         <IconButton
                                             flexDirection='row'
                                             icon="whatsapp"
+                                            color="#28a745"
                                             size={35}
-                                            onPress={() => Linking.openURL('https://api.whatsapp.com/send?phone=' + props.masinformacion.whatsapp)}
+                                            onPress={() => Linking.openURL('https://api.whatsapp.com/send?phone=' + masinformacion.whatsapp)}
                                         />
                                     </View>
                                     :
                                     <View></View>
                                 }
                                                                 
-                                {face?                                    
+                                {masinformacion.face?                                    
                                     <View style={[styles.red0]}>
                                         <IconButton
                                             flexDirection='row'
                                             icon="facebook"
-                                            
+                                            color="#007bff"
                                             size={35}
-                                            onPress={() => Linking.openURL(props.masinformacion.facebook)}/>
+                                            onPress={() => Linking.openURL(masinformacion.facebook)}/>
                                     </View>
                                 :
                                     <View></View>
                                 } 
                                 
-                                {inst?
+                                {masinformacion.inst?
                                     <View style={[styles.red0]}>                                   
                                         <IconButton
                                             flexDirection='row'
                                             icon="instagram"
+                                            color="#F71529"
                                             size={35}
-                                            onPress={() => Linking.openURL(inst)}
+                                            onPress={() => Linking.openURL(masinformacion.inst)}
                                             />
                                     </View>
                                 :
                                     <View></View>
                                 }
-                                {twit?
+                                {masinformacion.twit?
                                     <View style={[styles.red0]}>                                   
                                         <IconButton
                                             flexDirection='row'
                                             icon="twitter"
+                                            color="#0DCDE3"
                                             size={35}
-                                            onPress={() => Linking.openURL(twit)}
+                                            onPress={() => Linking.openURL(masinformacion.twit)}
                                             />
                                     </View>
                                 :
                                     <View></View>
                                 }
-                                {myap?
+                                {masinformacion.myap?
                                     <View style={[styles.red0]}>                                    
                                         <IconButton
                                             flexDirection='row'
                                             icon="store"
+                                            color="#D4D713"
                                             size={35}
-                                            onPress={() => Linking.openURL(myap)}
+                                            onPress={() => Linking.openURL(masinformacion.myap)}
                                             />
                                     </View>
                                 :
                                     <View></View>
                                 }
 
-                                {web?
+                                {masinformacion.web?
                                     <View style={[styles.red0]}>                                    
                                         <IconButton
                                             flexDirection='row'
                                             icon="laptop"
+                                            color="#858580"
                                             size={35}
-                                            onPress={() => Linking.openURL(web)}
+                                            onPress={() => Linking.openURL(masinformacion.web)}
                                             />
                                     </View>
                                 :
                                     <View></View>
                                 }
-                                {email?
+                                {masinformacion.email?
                                     <View style={[styles.red0]}>                                    
                                         <IconButton
                                             flexDirection='row'
                                             icon="email"
+                                            color="#F38808"
                                             size={35}
-                                            onPress={() => {Linking.openURL('mailto:' + email + '?subject=Consume Hidalgo')}}
+                                            onPress={() => {Linking.openURL('mailto:' + masinformacion.email + '?subject=Consume Hidalgo')}}
                                             />
                                     </View>
                                 :

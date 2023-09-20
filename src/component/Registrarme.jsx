@@ -1,9 +1,23 @@
 import React, {useState, useEffect} from 'react';
-import { ScrollView, Linking, Keyboard, TouchableWithoutFeedback, StyleSheet, View, Text, Alert } from 'react-native';
-import { TextInput, Button, HelperText } from 'react-native-paper';
+
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
+import {
+  Alert,
+  SafeAreaView,
+  Linking,
+  Keyboard,
+  ScrollView,  
+  StyleSheet,
+  Text,
+  View, TouchableOpacity,  Image,Dimensions,TouchableWithoutFeedback
+} from 'react-native';
+
+import { TextInput, Button, HelperText } from 'react-native-paper';
+
+const ScreenWidth = Dimensions.get('window').width;
+const Space = ScreenWidth - (ScreenWidth * .2); 
 const Registrar = ( {navigation} ) => { 
     //input text
     const [user, setText] = React.useState('');
@@ -90,10 +104,10 @@ const Registrar = ( {navigation} ) => {
     return (     
       
         <TouchableWithoutFeedback onPress={ ()=>{ Keyboard.dismiss(); setEscribe(false); }}>           
-          <ScrollView   style={styles.contenedor}>
+          <ScrollView  >  
                                                                                     
             <View style={styles.titulo}>                           
-                <Text style={styles.fs}>Registro</Text>         
+                <Text style={styles.tituloText}>Registro</Text>         
             </View>
             <View style={styles.texto}>
                      
@@ -208,13 +222,26 @@ const Registrar = ( {navigation} ) => {
                         Verifica tu contraseña!
                       </HelperText>}
                     {!validando?
-                      <Button 
+
+                      <View>
+
+                      <Text></Text>
+                    <Text></Text>
+                    <TouchableOpacity onPress={() => Linking.openURL("https://consume.hidalgo.gob.mx/aviso_de_privacidad.php")}>
+                    <Text style={{ textAlign:'right',  color: 'rgba(105, 28, 49, 1)' }}>Aviso de privacidad</Text>
+                    </TouchableOpacity>
+
+                    <Button 
                         style={{ marginTop: '5%'}}
                         icon="account-check-outline"
                         mode="contained"                             
                         onPress={() => saveData()}>
                         Registrar
                       </Button>
+                      </View>
+
+
+
                     :
                       <View></View>
                     }
@@ -223,7 +250,7 @@ const Registrar = ( {navigation} ) => {
                         style={{ marginTop: '5%'}}
                         icon="arrow-left"
                         mode="contained"                             
-                        onPress={() => navigation.navigate('IniciarSesion')}>
+                        onPress={() => navigation.navigate('Principal')}>
                         Regresar
                       </Button>
                     :
@@ -243,6 +270,19 @@ const Registrar = ( {navigation} ) => {
 };
 
 const styles = StyleSheet.create({
+  tituloText:{ 
+    marginVertical:'4%',
+    textAlign:'center',
+    fontSize: 28, color: '#620C31', letterSpacing: 1
+},
+
+    titulo:{
+      width: Space, 
+      marginTop:'14%', 
+      justifyContent:'center', 
+      marginHorizontal:'10%', 
+    },
+
     contenedor:{ flex:1 },        
     termo:{ flex:.25, justifyContent:'center'},
     cterm:{ flex:.8, marginHorizontal:'30%'},    

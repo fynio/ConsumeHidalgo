@@ -23,7 +23,6 @@ const Inicio = ( { navigation }) => {
         <ScrollView>
           <Bolsa/>
           <View style={{flex:1, marginTop:'5%'}}>
-            <Text style={styles.sesion}>Plataforma diseñada por la Secretaría de Desarrollo Económico de Hidalgo, con la finalidad de apoyar a la sociedad hidalguense mejorando la relación entre empresas comerciales, industriales y productores que ofrecen bienes y servicios, sin costo de inscripción, mensualidades ni comisiones por venta realizada. </Text>
             <Text style={styles.azul}>Encuentra <Text style={styles.azul}>todo</Text> lo que necesitas</Text>
             <Text style={styles.sesion}>Conoce los mejores precios, servicios y negocios. Haz trato con proveedores de tu localidad o municipio. Promocionate y apoya la compra y consumo local.</Text>
             

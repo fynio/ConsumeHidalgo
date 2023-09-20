@@ -1,8 +1,11 @@
 /* eslint-disable prettier/prettier */
 import React, { useState, useEffect } from 'react';
 import { ScrollView, StyleSheet, View, ActivityIndicator, Alert } from 'react-native';
+
 import {  Avatar, Searchbar, Button, Text } from 'react-native-paper';
 import { Picker } from '@react-native-picker/picker';
+
+
 import MyProducto from './producto';
 import axios from 'axios';
 import { Pages } from 'react-native-pages';
@@ -14,20 +17,37 @@ global.url = "https://consume.hidalgo.gob.mx/API/public/index.php/";
 const Productos = ({ navigation }) => {
 
  
+  
     const [categorias, setCategorias] = useState([]);
     const [municipios, setMunicipios] = useState([]);
     const [searchQuery, setSearchQuery] = React.useState('');
     const onChangeSearch = query => setSearchQuery(query);
     const [selectedCategoria, setSelectedCategoria] = useState('');
     const [selectedLanguage, setSelectedLanguage] = useState('');
+    const [idstore, setidstore] = React.useState(0);
+
+    const [token, setToken] = useState(null);
   
     
-      useEffect( () => {
-     
+    
+      useEffect(async () => {
+        const getToken = async () => {
+            try {
+              const storedToken = await AsyncStorage.getItem('@token');
+              if (storedToken !== null) {
+             
+                setToken(storedToken);
+              }
+            } catch (error) {
+              console.error('Error al obtener el token:', error);
+            }
+          };
+      
+          getToken();
 
-          getMunicipios();
-       
-            getCategorias();
+          consMunicipios();
+          consProductos();
+            consCategorias();
           
 
 
@@ -39,110 +59,110 @@ const Productos = ({ navigation }) => {
    
  
     const [dataTarjeta, setTarjeta] = useState([]);
-    const [buscando, setBuscando] = useState(false);
+    const [buscando, setBuscando] = useState(true);
 
-    const getMunicipios = async () => {
-        
-        const storedToken = await AsyncStorage.getItem('@token');
-        const url = global.url + "municipios/";
-        try {
-             
-            const resMun = await axios.post(url,{}, {
-                headers: {
-                    'Content-Type': 'application/json',
-                      'Authorization': `Bearer ${storedToken}`
-                    }
-              });
-            await setMunicipios(resMun.data);
-        } catch (error) {
-            console.log("Ocurrio un error en getMunicipios", error);
-            //Estrategia de cache
-        }
-    }   
-
-
-    const getCategorias = async () => {
+  
+    const consCategorias = async () => {
 
         const storedToken = await AsyncStorage.getItem('@token');
+        console.log("Este es el token consCategorias ",storedToken );
         const url = global.url + "categorias/";
 
         try {
-            const resCat = await axios.post(url, { tipo: 1 },  {
-                headers: {
+
+   
+            let headers = {
                 'Content-Type': 'application/json',
                   'Authorization': `Bearer ${storedToken}`
                 }
+            const resCat = await axios.post(url, { tipo: 1 },  {
+                headers: headers
               } );
  
+              setBuscando(false);
+
             setCategorias(resCat.data);
         } catch (error) {
-            console.log("Ocurrio un error en getCategorias", error);
-        }
-    }
-
-
-
-       
-    const getMunicipiosOP = async (itemValue) => {
-        setTarjeta([]);
-        setMunicipios([]);
-        const storedToken = await AsyncStorage.getItem('@token');
-        const url = global.url + "municipiosOperacion/";        
-        try {
-           
-            const resMunOp = await axios.post(url, {idcategoria:itemValue}, {
-                headers: {
-                    'Content-Type': 'application/json',
-                      'Authorization': `Bearer ${storedToken}`
-                    }
-              });
-          
-          
-            setMunicipios(resMunOp.data);
-            setSelectedLanguage("");            
-        } catch (error) {
-            
-        
-            console.log("Este es el error en getMunicipiosOP", error);
+            console.log("Ocurrio un error en consCategorias", error);
+            setBuscando(false);
             //Estrategia de cache
         }
-    }  
+    }
 
  
     const consProductos = async () => {
 
         const storedToken = await AsyncStorage.getItem('@token');
-        let data = {origen: Platform.OS === 'ios' ? 2 : 1};
-        setTarjeta([]);
+        console.log("Este es el token consProductos ",storedToken );
+        let headers = {
+            'Content-Type': 'application/json',
+              'Authorization': `Bearer ${storedToken}`
+            }
 
+
+        let data = {origen: Platform.OS === 'ios' ? 2 : 1, id_user : idstore};
+        setTarjeta([]);
+        setBuscando(true);
         const url = global.url + "busqueda/";
         try {
-
-            if(selectedCategoria=='' && selectedLanguage == '')
-            {
-                Alert.alert("Seleccione un municipio o una categoria");
-                return 0;
-            }
-            
-        setBuscando(true);
             const resPro = await axios.post(url, { tipo: 1, buscar:searchQuery, categoria:selectedCategoria,  municipio:selectedLanguage }, {
-                headers: {
-                    'Content-Type': 'application/json',
-                      'Authorization': `Bearer ${storedToken}`
-                    }
-        
+                headers: headers
               });
-              
-            setBuscando(false);
             setTarjeta(resPro.data);
-        } catch (error) {
-            
             setBuscando(false);
-            console.log("Ocurrio un error consProductos", error);
+            const id =global.id;
+            setidstore(id);
+            await axios.post(global.url + 'update/', data);   
+        } catch (error) {
+            console.log("Ocurrio un error", error);
+            setBuscando(false);
         }
     }
 
+   
+    const consMunicipiosOP = async (itemValue) => {
+        
+        const storedToken = await AsyncStorage.getItem('@token');
+        console.log("Este es el token consMunicipiosOP",storedToken );
+        const url = global.url + "municipiosOperacion/";        
+        try {
+            let headers = {
+                'Content-Type': 'application/json',
+                  'Authorization': `Bearer ${storedToken}`
+                }
 
+            const resMunOp = await axios.post(url, {idcategoria:itemValue}, {
+                headers: headers
+              });
+            console.log("Municipios",resMunOp);
+            setMunicipios(resMunOp.data);
+            setSelectedLanguage("");            
+        } catch (error) {
+            console.log("Este es el error en consMunicipiosOP", error);
+            //Estrategia de cache
+        }
+    }  
+
+    const consMunicipios = async () => {
+        
+        const storedToken = await AsyncStorage.getItem('@token');
+        console.log("Este es el token consMunicipios",storedToken );
+        const url = global.url + "municipios/";
+        try {
+            let headers = {
+                'Content-Type': 'application/json',
+                  'Authorization': `Bearer ${storedToken}`
+                }
+ 
+            const resMun = await axios.post(url, {
+                headers: headers
+              });
+            await setMunicipios(resMun.data);
+        } catch (error) {
+            console.log("Ocurrio un error en consMunicipios", error);
+            //Estrategia de cache
+        }
+    }   
 
     return (
         <ScrollView>                      
@@ -156,7 +176,7 @@ const Productos = ({ navigation }) => {
                     <View >
 
               
-                     <Picker selectedValue={selectedCategoria} onValueChange={(itemValue, itemIndex) => { setSelectedCategoria(itemValue); getMunicipiosOP(itemValue); }}>
+                     <Picker selectedValue={selectedCategoria} onValueChange={(itemValue, itemIndex) => { setSelectedCategoria(itemValue); consMunicipiosOP(itemValue); }}>
                             <Picker.Item style={{ color: '#620C31' }} label="Todas las Categorias" value="" />
                             {categorias.map(categ => (
                                 <Picker.Item style={{ color: '#620C31' }} key={categ.id_categoria} label={categ.nombre_categoria} value={categ.id_categoria} />
@@ -196,13 +216,12 @@ const Productos = ({ navigation }) => {
 
             {!buscando && dataTarjeta.length ===0? 
                 <View style={{alignItems:'center', marginTop:'10%'}}> 
-                    <Text>Seleccione una opcion</Text>                    
+                    <Text>Sin resultados para esta busqueda</Text>                    
                 </View>
             :
                 <View></View>
             }
-
-
+            
         <Pages containerStyle={{backgroundColor:'white',marginTop:'5%', height:450, marginVertical:'2%',}} indicatorColor={'#620C31'} >
                 {dataTarjeta.map((tarjeta) => {                    
                     return (
@@ -210,19 +229,6 @@ const Productos = ({ navigation }) => {
                     );
                 })}
         </Pages>
-
-
-
-
-
-
-
-
-
-
-
-
-
     </View>
         </ScrollView>
     );

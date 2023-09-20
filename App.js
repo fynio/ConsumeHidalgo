@@ -6,6 +6,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import {Button, TextInput, Text, View, Image, TouchableOpacity} from 'react-native';
 
 import IniciarSesion from './src/component/IniciarSesion';
+import Principal from './src/component/Principal';
 import Registrarme from './src/component/Registrarme'; 
 
  import AppNavigation from './src/component/navigation/AppNavigation';
@@ -31,17 +32,20 @@ const App = () =>{
   const Stack = createNativeStackNavigator();  
     return (
       <NavigationContainer independent={true}>
-      <Stack.Navigator screenOptions={{ headerShown: false }}>
- 
-      <Stack.Screen name="IniciarSesion" component={IniciarSesion} />
-        <Stack.Screen name="Registrarme" component={Registrarme} />
+        <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="Principal" component={Principal} />
+  
+        <Stack.Screen name="IniciarSesion" component={IniciarSesion} />
+          <Stack.Screen name="Registrarme" component={Registrarme} />
 
-        <Stack.Screen name="AppNavigation" component={AppNavigation} /> 
-         {/*    <Stack.Screen name="AdminNavigation" component={AdminNavigation} /> */}
+          <Stack.Screen name="AppNavigation" component={AppNavigation} /> 
+          {/*    <Stack.Screen name="AdminNavigation" component={AdminNavigation} /> */}
 
-       {/* <Stack.Screen name="AdminNavigation" component={AdminNavigation} />
-        <Stack.Screen name="Registrar" component={Registrar} />
-        <Stack.Screen name="Password" component={Password} /> */}
+        {/* <Stack.Screen name="AdminNavigation" component={AdminNavigation} />
+          <Stack.Screen name="Registrar" component={Registrar} />
+          <Stack.Screen name="Password" component={Password} /> */}
+
+
 
       </Stack.Navigator>
     </NavigationContainer>                       
