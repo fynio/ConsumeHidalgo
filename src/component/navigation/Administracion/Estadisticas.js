@@ -1,7 +1,8 @@
 import React, {useState, useEffect} from 'react';
-import SplashScreen from 'react-native-splash-screen';
 import { Button } from 'react-native-paper';
 
+
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
 
 import {
@@ -27,7 +28,7 @@ import {
 import { Dimensions } from "react-native";
 import {Picker} from '@react-native-picker/picker';
 
-const Graficas = ( { navigation }) => {
+const Estadisticas = ( { navigation }) => {
   const screenWidth = Dimensions.get("window").width;
   global.url = "https://consume.hidalgo.gob.mx/API/public/index.php/";
   const [validando, setValidando] = React.useState(false);
@@ -97,12 +98,20 @@ const Graficas = ( { navigation }) => {
   };
   
 
-  useEffect(() => { SplashScreen.hide(); getDatosRegion();},[]);
+  useEffect(() => { getDatosRegion();},[]);
 
 const getDatosRegion = async () => {
+
+  const storedToken = await AsyncStorage.getItem('@token');
+
   const url = global.url + "estadistica/Region";
   try {
-      const resCat = await axios.get(url);
+      const resCat = await axios.get(url,{
+        headers: {
+            'Content-Type': 'application/json',
+              'Authorization': `Bearer ${storedToken}`
+            }
+      });
       var labels_ = [];
       var datos_ = [];
       var datospie_ = [];
@@ -125,9 +134,17 @@ const getDatosRegion = async () => {
 
 
 const getDatosMunicipio = async () => {
+  
+  const storedToken = await AsyncStorage.getItem('@token');
+
   const url = global.url + "estadistica/Municipio";
   try {
-      const resCat = await axios.get(url);
+      const resCat = await axios.get(url,{
+        headers: {
+            'Content-Type': 'application/json',
+              'Authorization': `Bearer ${storedToken}`
+            }
+      });
       var labels_ = [];
       var datos_ = [];
       var datospie_ = [];
@@ -152,9 +169,16 @@ const getDatosMunicipio = async () => {
 
 
 const getDatosSexo = async () => {
+  
+  const storedToken = await AsyncStorage.getItem('@token');
   const url = global.url + "estadistica/Sexo";
   try {
-      const resCat = await axios.get(url);
+      const resCat = await axios.get(url,{
+        headers: {
+            'Content-Type': 'application/json',
+              'Authorization': `Bearer ${storedToken}`
+            }
+      });
       var labels_ = [];
       var datos_ = [];
       var datospie_ = [];
@@ -174,9 +198,16 @@ const getDatosSexo = async () => {
 
 
 const getDatosTamano = async () => {
+  
+  const storedToken = await AsyncStorage.getItem('@token');
   const url = global.url + "estadistica/Tamano";
   try {
-      const resCat = await axios.get(url);
+      const resCat = await axios.get(url,{
+        headers: {
+            'Content-Type': 'application/json',
+              'Authorization': `Bearer ${storedToken}`
+            }
+      });
       var labels_ = [];
       var datos_ = [];
       var datospie_ = [];
@@ -199,9 +230,16 @@ const getDatosTamano = async () => {
 
 
 const getDatosTipoUsuario = async () => {
+  
+  const storedToken = await AsyncStorage.getItem('@token');
   const url = global.url + "estadistica/TipoDeUsuario";
   try {
-      const resCat = await axios.get(url);
+      const resCat = await axios.get(url,{
+        headers: {
+            'Content-Type': 'application/json',
+              'Authorization': `Bearer ${storedToken}`
+            }
+      });
       var labels_ = [];
       var datos_ = [];
       var datospie_ = [];
@@ -222,9 +260,16 @@ const getDatosTipoUsuario = async () => {
 
 
 const getDatosEmpleosConservados = async () => {
+  
+  const storedToken = await AsyncStorage.getItem('@token');
   const url = global.url + "estadistica/EmpleosConservados";
   try {
-      const resCat = await axios.get(url);
+      const resCat = await axios.get(url,{
+        headers: {
+            'Content-Type': 'application/json',
+              'Authorization': `Bearer ${storedToken}`
+            }
+      });
       var labels_ = [];
       var datos_ = [];
       var datospie_ = [];
@@ -247,9 +292,16 @@ const getDatosEmpleosConservados = async () => {
 
 
 const getDatosSector = async () => {
+  
+  const storedToken = await AsyncStorage.getItem('@token');
   const url = global.url + "estadistica/Sector";
   try {
-      const resCat = await axios.get(url);
+      const resCat = await axios.get(url,{
+        headers: {
+            'Content-Type': 'application/json',
+              'Authorization': `Bearer ${storedToken}`
+            }
+      });
       var labels_ = [];
       var datos_ = [];
       var datospie_ = [];
@@ -271,9 +323,16 @@ const getDatosSector = async () => {
 
 
 const getDatosSubsector = async () => {
+  
+  const storedToken = await AsyncStorage.getItem('@token');
   const url = global.url + "estadistica/Subsector";
   try {
-      const resCat = await axios.get(url);
+      const resCat = await axios.get(url,{
+        headers: {
+            'Content-Type': 'application/json',
+              'Authorization': `Bearer ${storedToken}`
+            }
+      });
       var labels_ = [];
       var datos_ = [];
       var datospie_ = [];
@@ -513,4 +572,4 @@ rowEnd: {
 
 });
 
-export default Graficas;
+export default Estadisticas;

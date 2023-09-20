@@ -9,39 +9,45 @@ import {
   Text,
   View,  
 } from 'react-native';
-
-
 const Inicio = ( { navigation }) => { 
 
   return (
       <SafeAreaView style={styles.contenedor}>
-        <ScrollView>
+        <ScrollView style={{margin:10}}>
           <Bolsa/>
           <View style={{flex:1, marginTop:'5%'}}>
-            <Text style={styles.azul}>Bienvenido  <Text style={styles.azul}>administrador</Text></Text>
+            <Text style={styles.vino}>Bienvenido  <Text style={styles.vino}>administrador</Text></Text>
             <Text style={styles.sesion}>Esta sección servirá para el administrador</Text>
             
-            <View style={styles.rowEnd}>
-              <View style={[styles.Vw_1, styles.Vw_2]}>
+            <View >
+              <View>
+                <Text></Text>        
                 <Button 
                     style={{ marginTop: '5%'}}
-                    icon="basket"
+                    icon="check"
                     mode="contained"                  
-                    onPress={() => navigation.navigate("AprobarRegistros")}>
-                    Aprobar registros
+                    onPress={() => navigation.navigate("Validar empresas")}>
+                    Validar empresas
+                </Button>          
+                <Text></Text>       
+                <Button  
+                    icon="domain"
+                    mode="contained"                  
+                    onPress={() => navigation.navigate("Empresas aprobadas")}>
+                  Ver empresas aprobadas
+                </Button>                
+       
+                <Text></Text>        
+                <Button  style= {styles.dorado}
+
+                    icon="finance"
+                    mode="contained"                  
+                    onPress={() => navigation.navigate("Estadisticas")}>
+                  Estadisticas
                 </Button>                
               </View>
-              <View style={[styles.Vw_1]}>
-              <Button 
-                    style={{ marginTop: '5%'}}
-                    icon="basket-fill"
-                    mode="contained"                  
-                    onPress={() => navigation.navigate("Servicios")}>
-                    Servicios
-                </Button>               
-              </View>
-            </View>
             
+            </View>
             
     {/* fin de botones parte 2 */}
           </View>         
@@ -72,19 +78,23 @@ const styles = StyleSheet.create({
     marginVertical:'4%',
     fontSize: 28, color: '#BC945B', letterSpacing: 1
   },
-azul:{
+
+dorado:{
+  backgroundColor:'rgb(188,149,91)'
+},
+vino:{
   marginHorizontal:'5%',
     marginVertical:'4%',
     fontSize: 28, color: '#620C31', letterSpacing: 1
 },
-azulProductos:{
+vinoProductos:{
   marginTop:'-2%',
   marginHorizontal:'5%',
   marginVertical:'4%',
   fontSize:20, color: '#620C31', letterSpacing: 1
 },
 
-azulServicios:{
+vinoServicios:{
   marginTop:'2%',
   marginHorizontal:'5%',
   marginVertical:'4%',

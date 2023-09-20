@@ -39,7 +39,7 @@ const Registrar = ( {navigation} ) => {
     const [htcurp, sethtCurp] = React.useState(false);
     const [htpass, sethtPass] = React.useState(false);
     //icono eye-off
-    const [showPassword, setPassword] = React.useState(false);
+    const [showcontrasena, setcontrasena] = React.useState(false);
     //boton cargaando
     const [validando, setValidando] = React.useState(false);
 
@@ -72,7 +72,7 @@ const Registrar = ( {navigation} ) => {
             if(response.status==200){          
                     
                if(response.data.code==1){
-                Alert.alert("Correcto!",
+                Alert.alert("¡Bien hecho!",
                 response.data.text,
                   [ { text: "Ok", onPress: () => navigation.navigate('IniciarSesion') }]
                 );
@@ -189,10 +189,10 @@ const Registrar = ( {navigation} ) => {
                         keyboardType="default"                 
                         onChangeText={pass => setPass(pass)}
                         maxLength = {20}
-                        secureTextEntry={!showPassword}
+                        secureTextEntry={!showRecuperarContrasena}
                         right={<TextInput.Icon 
-                          name={showPassword ? "eye-off" : "eye"}
-                          onPress={() => setPassword(!showPassword)}
+                          name={showcontrasena ? "eye-off" : "eye"}
+                          onPress={() => setcontrasena(!showcontrasena)}
                           color="#620C31"/>}                    
                       />
                       <HelperText type="error" visible={valPass}>
@@ -207,10 +207,10 @@ const Registrar = ( {navigation} ) => {
                         keyboardType="default"                 
                         onChangeText={passCon => setPassCon(passCon)}
                         maxLength = {20}
-                        secureTextEntry={!showPassword}
+                        secureTextEntry={!showRecuperarContrasena}
                         right={<TextInput.Icon 
-                          name={showPassword ? "eye-off" : "eye"}
-                          onPress={() => setPassword(!showPassword)}
+                          name={showcontrasena ? "eye-off" : "eye"}
+                          onPress={() => setcontrasena(!showcontrasena)}
                           color="#620C31"/>}                    
                       />
                       {valPass?
@@ -227,7 +227,7 @@ const Registrar = ( {navigation} ) => {
 
                       <Text></Text>
                     <Text></Text>
-                    <TouchableOpacity onPress={() => Linking.openURL("https://consume.hidalgo.gob.mx/aviso_de_privacidad.php")}>
+                    <TouchableOpacity onPress={() => Linking.openURL("https://consume.hidalgo.gob.mx/politicas_de_privacidad.html")}>
                     <Text style={{ textAlign:'right',  color: 'rgba(105, 28, 49, 1)' }}>Aviso de privacidad</Text>
                     </TouchableOpacity>
 

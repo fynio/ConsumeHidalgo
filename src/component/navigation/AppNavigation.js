@@ -6,10 +6,12 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import Inicio from './Usuario/Inicio';
 import Productos from './Usuario/productos';
 import Servicios from './Usuario/servicios';
-import Prueba from './../Prueba';
+import CerrarSesion from '../CerrarSesion';
 import IniciarSesion from './../IniciarSesion';
 import Principal from './../Principal';
 import Registrarme from './../Registrarme'; 
+import RecuperarContrasena from  './../RecuperarContrasena'; 
+
 const Drawer = createDrawerNavigator();
 const Stack = createNativeStackNavigator();
 
@@ -23,7 +25,7 @@ function Root({navigation}) {
        <Drawer.Screen name="Productos" component={Productos} />
      <Drawer.Screen name="Servicios" component={Servicios} /> 
         
-        <Drawer.Screen name="Cerrar sesion" component={Prueba} />
+        <Drawer.Screen name="Cerrar sesion" component={CerrarSesion} />
       
     </Drawer.Navigator>
   ); 
@@ -43,8 +45,9 @@ function App({navigation}) {
         <Stack.Screen  name="AppNavigation" component={Root} />
         <Stack.Screen  name="Principal" component={Principal} />
         <Stack.Screen  name="Registrarme" component={Registrarme} />
+        <Stack.Screen  name="RecuperarContrasena" component={RecuperarContrasena} />
 
-        
+         
 
       </Stack.Navigator>
     </NavigationContainer> 

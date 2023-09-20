@@ -48,7 +48,7 @@ const AprobarDatos = ( { navigation }) => {
 
 const getDatosAprobar = async () => {
 
-  console.log("HOLAAA");
+ 
   setDatos([]);
   
 
@@ -159,7 +159,7 @@ var [logo,setLogo] = useState({});
               height:'100%',
               flex: 1,
             }}>
-          { negocio?<ScrollView style={{padding:8}}>
+          { negocio?<ScrollView style={{padding:20}}>
             <Text  style={[{ color:'#620C31', flex:1, }]}>Revisando</Text>
             {logo?<Image
                 style={{width: '100%', height: 100, resizeMode: 'contain'}}
@@ -361,7 +361,7 @@ var [logo,setLogo] = useState({});
           :<FlatList
             style={{
               width:'100%',
-              height:'100%',
+              height:'auto',
               flex: 1,
             }}
               ListEmptyComponent={_listEmptyComponent}
@@ -379,10 +379,19 @@ var [logo,setLogo] = useState({});
                     style={{  flex:1, marginTop: '5%'}}
                     icon="eye"
                     mode="contained"               
-                    onPress={() => irDetalle(item)}>Ir</Button>
+                    onPress={() => irDetalle(item)}>Ver</Button>
               </View>}
             />
           }
+
+
+          <Button 
+                    style={{ marginTop: '5%'}}
+                    icon="arrow-left"
+                    mode="contained"                  
+                    onPress={() => navigation.navigate("Inicio")}>
+                    Regresar
+                </Button>  
           </View>
       </SafeAreaView>
   );

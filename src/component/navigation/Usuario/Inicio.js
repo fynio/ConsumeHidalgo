@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'; 
+import React  from 'react'; 
 import Bolsa from '../../bolsa';
 import { Button } from 'react-native-paper';
 
@@ -11,9 +11,7 @@ import {
 } from 'react-native';
 
 
-const Inicio = ( { navigation }) => { 
-  const [validando, setValidando] = React.useState(false);
-  const [version, setVersion] = React.useState(false);
+const Inicio = ( { navigation }) => {  
 
   const irProductos = ()=>{  navigation.navigate("Productos") }
   const irServicios = ()=>{  navigation.navigate("Servicios") }

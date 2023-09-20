@@ -1,15 +1,14 @@
-import React, { useState } from 'react';
-import Constants from 'expo-constants';
-import {StyleSheet,  SafeAreaView,TouchableWithoutFeedback,  ScrollView,
+import React  from 'react'; 
+import {  SafeAreaView,TouchableWithoutFeedback,  ScrollView,
     Keyboard, Text, View,Image, Dimensions,TouchableOpacity, Linking, Alert} from 'react-native';
 import { TextInput, Button, HelperText } from 'react-native-paper';
 import axios from 'axios';
 
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import Registrarme from './Registrarme';
+import AsyncStorage from '@react-native-async-storage/async-storage'; 
 const ScreenWidth = Dimensions.get('window').width;
 const Space = ScreenWidth - (ScreenWidth * .2); 
 
+import styles from './../themes/theme';
 global.url = "https://consume.hidalgo.gob.mx/API/public/index.php/";
 
 
@@ -17,13 +16,8 @@ const IniciarSesion = ( {navigation})=>{
 
     const [escribe, setEscribe] = React.useState(false);
     const [correo, setCorreo] = React.useState('admin@gmail.com');
-    const [password, setPassword] = React.useState('1');
-
-
-    //revisa que exista un valor en la sesión
-    const [idTipoUsuario, setIdTipoUsuario] = React.useState(0);
-    const [token, setToken] = React.useState(); 
-
+    const [contrasena, setcontrasena] = React.useState('1');
+  
 
     const validateEmail = (email) => {
         const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
@@ -44,14 +38,14 @@ const IniciarSesion = ( {navigation})=>{
                 Alert.alert("Ingrese un correo electrónico válido");
                 return 0;
             }
-            if(password=="")
+            if(contrasena=="")
             {
                 Alert.alert("Ingrese una contraseña");
                 return 0;
             }
     
     
-            let DATOS = {user: correo, pass: password, origen: Platform.OS === 'ios' ? 2 : 1 };
+            let DATOS = {user: correo, pass: contrasena, origen: Platform.OS === 'ios' ? 2 : 1 };
     
          
             const response = await axios.post( global.url + 'login/', DATOS);
@@ -64,10 +58,7 @@ const IniciarSesion = ( {navigation})=>{
 
                 if(response.data.codigo==1){
       
-                    await setIdTipoUsuario(JSON.stringify(response.data.id_tipo_usuario));
-                    await setToken(JSON.stringify(response.data.token));
     
-                    await AsyncStorage.setItem('@id_tipo_usuario', JSON.stringify(response.data.id_tipo_usuario));
                     await  AsyncStorage.setItem('@token', JSON.stringify(response.data.token).replace(/['"]+/g, ''));
                 
                     if(JSON.stringify(response.data.id_tipo_usuario==2))
@@ -76,7 +67,7 @@ const IniciarSesion = ( {navigation})=>{
                      
                      
                     }
-                    if(JSON.stringify(response.data.id_tipo_usuario==1))
+                    if(JSON.stringify(response.data.id_tipo_usuario==1|| response.data.id_tipo_usuario==0))
                     {
                         navigation.navigate("AdminNavigation");
                      
@@ -107,7 +98,7 @@ const IniciarSesion = ( {navigation})=>{
     
             <TouchableWithoutFeedback onPress={ ()=>{ Keyboard.dismiss(); setEscribe(false); }}>     
 
-            <ScrollView style={{backgroundColor:'rgb(255,255,255)'}}>    
+            <ScrollView style={{backgroundColor:'rgb(255,255,255)', height:'100%',   display:'flex',flexDirection:'column'}}>    
                 <View 
                         
 
@@ -115,7 +106,7 @@ const IniciarSesion = ( {navigation})=>{
                         width: Space, 
                      display:'flex', 
                      flexDirection:'column', 
-                        marginTop:'14%', 
+                        marginTop:'40%', 
                         justifyContent:'center', 
                         marginHorizontal:'10%'
                     }}>
@@ -145,10 +136,10 @@ const IniciarSesion = ( {navigation})=>{
                         autoCorrect={false}
                         mode="flat"
                         style={{ color:'red', backgroundColor:'rgba(200,200,200,0.1)', width:'100%', marginTop: '2%', textAlign: 'center' }}
-                        value={password}
+                        value={contrasena}
                         label="Contraseña"
-                        keyboardType="visible-password"
-                        onChangeText={password => setPassword(password)}
+                        keyboardType="visible-contrasena"
+                        onChangeText={contrasena => setcontrasena(contrasena)}
                         maxLength={108}
                         secureTextEntry={true} 
                         autoCapitalize="none"
@@ -160,11 +151,7 @@ const IniciarSesion = ( {navigation})=>{
                     Iniciar sesión
                     </Button>
 
-                    <Text></Text>
-                    <Text></Text> 
-                    <Button  onPress={() => navigation.navigate('Registrarme')} style={{backgroundColor:'rgba(188,149,91,1)'}} icon="account-plus" mode="contained" >
-                    Registrarme
-                    </Button> 
+                
 
                     <Text></Text>
                     <Text></Text>
@@ -200,25 +187,6 @@ const IniciarSesion = ( {navigation})=>{
     )
 }
 
-const styles = StyleSheet.create({
-    tituloText:{ 
-        marginVertical:'4%',
-        fontSize: 28, color: '#620C31', letterSpacing: 1
-    },
-    topImage:{height: 190, width: 120 },
-    bottomImage:{height: 80, width: 150 },
-    titulo:{marginHorizontal:'2%', alignItems:'center', marginTop:10},
-    consume:{ fontSize: 35, color: '#050545', letterSpacing: 1, fontFamily:'Izmir-Heavy'},
-    hidalgo:{ fontSize: 35, color: '#0080dc', letterSpacing: 1, fontFamily:'Izmir-Heavy'},
-    input: {
-        height: 40,
-        margin: 12,
-        borderWidth: 1,
-        padding: 10,
-      },
-
- });
-
-
+ 
 
 export default IniciarSesion;  

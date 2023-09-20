@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from 'react';
-import SplashScreen from 'react-native-splash-screen';
 import { Button } from 'react-native-paper';
 
 import axios from 'axios';
@@ -17,9 +16,11 @@ import {
 } from 'react-native';
 
 
-const NegociosAprobados = ( { navigation }) => {
+import AsyncStorage from '@react-native-async-storage/async-storage';
+const EmpresasAprobadas = ( { navigation }) => {
   global.url = "https://consume.hidalgo.gob.mx/API/public/index.php/";
-  useEffect(() => { SplashScreen.hide(); getDatosAprobar();},[]);
+  useEffect(() => {
+    getDatosAprobar();},[]);
   const [validando, setValidando] = React.useState(false);
   
   const [version, setVersion] = React.useState(false);
@@ -50,13 +51,23 @@ const NegociosAprobados = ( { navigation }) => {
 
 const getDatosAprobar = async () => {
   setDatos([]);
-  const url = global.url + "negocios_aprobados/";
+    const storedToken = await AsyncStorage.getItem('@token');
+ 
+    const url = global.url + "negocios_aprobados/";
+
+           
   try {
-      const resCat = await axios.get(url);
+      const resCat = await axios.get(url, {
+        headers: {
+            'Content-Type': 'application/json',
+              'Authorization': `Bearer ${storedToken}`
+            }
+      });
       setDatos(resCat.data);
       setRefreshing(false);
       setExtraData(new Date());
   } catch (error) {
+    console.log("Ocurrio un error", error);
     setRefreshing(false);
       //Estrategia de cache
   }
@@ -79,9 +90,18 @@ const regresar = async () => {
 const aprobar = async () => {
   setValidando(true)
   
+  
+  const storedToken = await AsyncStorage.getItem('@token');
+ 
+
   const url = global.url + "aprobar_productoServicio/"+negocio.id_ps;
   try {
-      const resCat = await axios.post(url, negocio);
+      const resCat = await axios.post(url, negocio,{
+        headers: {
+            'Content-Type': 'application/json',
+              'Authorization': `Bearer ${storedToken}`
+            }
+      });
       if(resCat.data.codigo == 1){
         setNegocio(null);
         getDatosAprobar();
@@ -94,6 +114,8 @@ const aprobar = async () => {
       }
       setValidando(false)
   } catch (error) {
+    
+    console.log("Ocurrio un error", error);
     setValidando(false)
       //Estrategia de cache
   }
@@ -101,26 +123,33 @@ const aprobar = async () => {
 
 const irDetalle = async (item)=>{
   setLogo(null);
-  const url = global.url + "aprobar_productoServicio/"+item.id_ps;
+   
+ 
+
   try {
-      const resCat = await axios.get(url);
+    const url = global.url + "aprobar_productoServicio/"+item.id_ps;
+  const storedToken = await AsyncStorage.getItem('@token');
+ 
+  console.log(storedToken);
+
+
+      const resCat = await axios.get(url,{
+        headers: {
+            'Content-Type': 'application/json',
+              'Authorization': `Bearer ${storedToken}`
+            }
+      });
       setNegocio(resCat.data);
       setValidando(false)
       if(resCat.data.imagen && resCat.data.imagen.length > 0){
         setLogo({uri:`https://consume.hidalgo.gob.mx/logo_negocio/${resCat.data.imagen}`})
       }
   } catch (error) {
+    console.log("Ocurrio un error irDetalle", error);
     setValidando(false)
-      //Estrategia de cache
+    
   }
   
-  /*navigation.navigate("AdminNavigation");
-  let data = {origen: Platform.OS === 'ios' ? 2 : 1, id_user: idstore}; 
-    try {
-      await axios.post(global.url + 'insert/', data);    
-  } catch (error) {
-      //Estrategia de cache
-  }*/
   
 }
 var [logo,setLogo] = useState({});
@@ -200,9 +229,14 @@ var [logo,setLogo] = useState({});
 
             <Text  style={styles.text}>Whatsapp</Text>
             <Text  style={styles.input}>{negocio.whatsapp}</Text>
-
-            <View style={{marginBottom:15, flexDirection:'row'}}>
-                <Button style={{flex:1}} onPress={() => regresar()}>Regresar</Button>
+            <Text></Text>
+            <Text></Text>
+            <View style={{marginBottom:15, flexDirection:'column', alignItems:'center'}}>
+                <Button     style={{ margin: 'auto'}}
+                    icon="arrow-left"
+                    mode="contained"         onPress={() => regresar()}>Regresar</Button>
+            <Text></Text>
+            <Text></Text>
             </View>
 
           </ScrollView>
@@ -223,7 +257,9 @@ var [logo,setLogo] = useState({});
                 <Text style={[{ color:'black', padding:8, flex:3, }]}>{item.nombre_ps}</Text>
                 <Text style={[{ color:'#620C31', padding:8, flex:3, }]}>{item.nombre_propietario}</Text>
                 <Text style={[{ color:'black', padding:8, flex:2, }]}>{item.nombre_categoria}</Text>
-                <Button style={[{  flex:1, }]} onPress={() => irDetalle(item)}>Ir</Button>
+                <Button  style={{  flex:1, marginTop: '5%', maxHeight:40}}
+                    icon="eye"
+                    mode="contained" onPress={() => irDetalle(item)}>Ver</Button>
               </View>}
             />
           }
@@ -331,4 +367,4 @@ rowEnd: {
 
 });
 
-export default NegociosAprobados;
+export default EmpresasAprobadas;
