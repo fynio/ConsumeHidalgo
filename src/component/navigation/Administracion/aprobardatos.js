@@ -340,7 +340,7 @@ var [logo,setLogo] = useState({});
             <Text></Text>
             <View style={{marginBottom:15, flexDirection:'row'}}>
                 <Button style={{  flex:1, marginTop: '5%'}}
-                    icon="eye"
+                    icon="arrow-left"
                     mode="contained"     onPress={() => regresar()}>Regresar</Button>
                 {validando?<Button style={{  flex:1, marginTop: '5%'}}
                     icon="account-check"
