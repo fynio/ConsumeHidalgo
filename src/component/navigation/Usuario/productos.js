@@ -55,7 +55,7 @@ const Productos = ({ navigation }) => {
               });
             await setMunicipios(resMun.data);
         } catch (error) {
-            console.log("Ocurrio un error en getMunicipios", error);
+      
             //Estrategia de cache
         }
     }   
@@ -76,7 +76,7 @@ const Productos = ({ navigation }) => {
  
             setCategorias(resCat.data);
         } catch (error) {
-            console.log("Ocurrio un error en getCategorias", error);
+         
         }
     }
 
@@ -103,7 +103,7 @@ const Productos = ({ navigation }) => {
         } catch (error) {
             
         
-            console.log("Este es el error en getMunicipiosOP", error);
+        
             //Estrategia de cache
         }
     }  
@@ -144,7 +144,7 @@ const Productos = ({ navigation }) => {
         } catch (error) {
             
             setBuscando(false);
-            console.log("Ocurrio un error consProductos", error);
+     
         }
     }
 

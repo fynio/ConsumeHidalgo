@@ -12,11 +12,11 @@ import {
   Text,
   TextInput,
   View,
-  Image,
+  Image,Dimensions,
   Alert,
 } from 'react-native';
 
-
+const ScreenWidth = Dimensions.get('window').width;
 const AprobarDatos = ( { navigation }) => {
   global.url = "https://consume.hidalgo.gob.mx/API/public/index.php/";
 
@@ -67,7 +67,7 @@ const getDatosAprobar = async () => {
       setRefreshing(false);
       setExtraData(new Date());
   } catch (error) {
-    console.log(error);
+   
     setRefreshing(false);
       //Estrategia de cache
   }
@@ -126,7 +126,6 @@ const irDetalle = async (item)=>{
   setLogo(null);
   try {
 
-    console.log("Estoy aqui");
       const resCat = await axios.get(url , {
         headers: {
             'Content-Type': 'application/json',
@@ -134,7 +133,7 @@ const irDetalle = async (item)=>{
             }
       });
 
-      console.log(resCat.data);
+
 
       setNegocio(resCat.data);
       setValidando(false)
@@ -360,9 +359,8 @@ var [logo,setLogo] = useState({});
           </ScrollView>
           :<FlatList
             style={{
-              width:'100%',
-              height:'auto',
-              flex: 1,
+              Width: ScreenWidth, 
+              height:'auto', 
             }}
               ListEmptyComponent={_listEmptyComponent}
               refreshing={refreshing}
@@ -371,12 +369,12 @@ var [logo,setLogo] = useState({});
               data={datos}
               ItemSeparatorComponent={ItemSeparator}
               renderItem={({item}) =>
-              <View style={{marginBottom:15, flexDirection:'row'}}>
+              <View style={{ paddingLeft:'5%', width:'90%', marginBottom:15, flexDirection:'row'}}>
                 <Text style={[{ color:'black', padding:8, flex:3, }]}>{item.nombre_ps}</Text>
                 <Text style={[{ color:'#620C31', padding:8, flex:3, }]}>{item.nombre_propietario}</Text>
                 <Text style={[{ color:'black', padding:8, flex:2, }]}>{item.nombre_categoria}</Text>
                 <Button 
-                    style={{  flex:1, marginTop: '5%'}}
+                    style={{ maxHeight:50}}
                     icon="eye"
                     mode="contained"               
                     onPress={() => irDetalle(item)}>Ver</Button>
@@ -389,7 +387,7 @@ var [logo,setLogo] = useState({});
                     style={{ marginTop: '5%'}}
                     icon="arrow-left"
                     mode="contained"                  
-                    onPress={() => navigation.navigate("Inicio")}>
+                    onPress={() => navigation.navigate("InicioAdministracion")}>
                     Regresar
                 </Button>  
           </View>

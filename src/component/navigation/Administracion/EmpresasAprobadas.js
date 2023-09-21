@@ -67,7 +67,7 @@ const getDatosAprobar = async () => {
       setRefreshing(false);
       setExtraData(new Date());
   } catch (error) {
-    console.log("Ocurrio un error", error);
+
     setRefreshing(false);
       //Estrategia de cache
   }
@@ -76,7 +76,7 @@ const getDatosAprobar = async () => {
 const _listEmptyComponent = () => {
   return (
       <View style={{ alignItems:'center'}}>
-        <Text style={{color:'black', fontWeight:'bold'}}>No hay negocios/servicios por validar</Text>
+        <Text style={{color:'black', fontWeight:'bold'}}>Cargando empresas ...</Text>
       </View>
   )
 }
@@ -115,7 +115,7 @@ const aprobar = async () => {
       setValidando(false)
   } catch (error) {
     
-    console.log("Ocurrio un error", error);
+
     setValidando(false)
       //Estrategia de cache
   }
@@ -129,11 +129,7 @@ const irDetalle = async (item)=>{
   try {
     const url = global.url + "aprobar_productoServicio/"+item.id_ps;
   const storedToken = await AsyncStorage.getItem('@token');
- 
-  console.log(storedToken);
-
-
-      const resCat = await axios.get(url,{
+       const resCat = await axios.get(url,{
         headers: {
             'Content-Type': 'application/json',
               'Authorization': `Bearer ${storedToken}`
@@ -145,7 +141,7 @@ const irDetalle = async (item)=>{
         setLogo({uri:`https://consume.hidalgo.gob.mx/logo_negocio/${resCat.data.imagen}`})
       }
   } catch (error) {
-    console.log("Ocurrio un error irDetalle", error);
+
     setValidando(false)
     
   }
@@ -159,7 +155,6 @@ var [logo,setLogo] = useState({});
         <View style={{
               width:'100%',
               height:'100%',
-              flex: 1,
             }}>
           { negocio?<ScrollView style={{padding:8}}>
             <Text  style={[{ color:'#620C31', flex:1, }]}>Revisando</Text>
@@ -253,11 +248,10 @@ var [logo,setLogo] = useState({});
               data={datos}
               ItemSeparatorComponent={ItemSeparator}
               renderItem={({item}) =>
-              <View style={{marginBottom:15, flexDirection:'row'}}>
-                <Text style={[{ color:'black', padding:8, flex:3, }]}>{item.nombre_ps}</Text>
-                <Text style={[{ color:'#620C31', padding:8, flex:3, }]}>{item.nombre_propietario}</Text>
-                <Text style={[{ color:'black', padding:8, flex:2, }]}>{item.nombre_categoria}</Text>
-                <Button  style={{  flex:1, marginTop: '5%', maxHeight:40}}
+              <View style={{width:'100%', marginBottom:15, flexDirection:'row'}}>
+                <Text style={[{ color:'black', padding:8, maxWidth:'33%', minWidth:'33%'    }]}>{item.nombre_ps}</Text>
+                <Text style={[{ color:'black', padding:8, maxWidth:'30%',  minWidth:'30%' }]}>{item.nombre_categoria}</Text>
+                <Button  style={{ maxHeight:40, height:40}}
                     icon="eye"
                     mode="contained" onPress={() => irDetalle(item)}>Ver</Button>
               </View>}

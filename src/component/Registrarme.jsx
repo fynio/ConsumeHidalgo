@@ -39,6 +39,9 @@ const Registrar = ( {navigation} ) => {
     const [htcurp, sethtCurp] = React.useState(false);
     const [htpass, sethtPass] = React.useState(false);
     //icono eye-off
+     
+    const [showRecuperarContrasena, setshowRecuperarContrasena] = React.useState(false);
+
     const [showcontrasena, setcontrasena] = React.useState(false);
     //boton cargaando
     const [validando, setValidando] = React.useState(false);

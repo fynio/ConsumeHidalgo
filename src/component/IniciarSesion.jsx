@@ -33,6 +33,7 @@ const IniciarSesion = ( {navigation})=>{
     const iniciarSesionHandler = async ()=>{
        
         try{
+            
             if(validateEmail(correo)==false)
             {
                 Alert.alert("Ingrese un correo electrónico válido");
@@ -61,16 +62,18 @@ const IniciarSesion = ( {navigation})=>{
     
                     await  AsyncStorage.setItem('@token', JSON.stringify(response.data.token).replace(/['"]+/g, ''));
                 
-                    if(JSON.stringify(response.data.id_tipo_usuario==2))
+                    if(JSON.stringify(response.data.id_tipo_usuario)==2)
                     {
                         navigation.navigate("AppNavigation");
-                     
+                        return true;
                      
                     }
-                    if(JSON.stringify(response.data.id_tipo_usuario==1|| response.data.id_tipo_usuario==0))
+                    if(JSON.stringify(response.data.id_tipo_usuario)==1|| JSON.stringify(response.data.id_tipo_usuario)==0)
                     {
+                  
                         navigation.navigate("AdminNavigation");
                      
+                        return true;
                      
                     }
 
@@ -86,7 +89,7 @@ const IniciarSesion = ( {navigation})=>{
 
 
         }catch(e){
-            console.log(e); 
+         
         }
     
 

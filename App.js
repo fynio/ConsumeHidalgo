@@ -21,7 +21,7 @@ DefaultTheme.colors.accent = '#BC945B';
 DefaultTheme.colors.primary = '#620C31';
 
 
-
+ 
 
 import Inicio from './src/component/navigation/Usuario/Inicio';
 import Productos from './src/component/navigation/Usuario/productos';

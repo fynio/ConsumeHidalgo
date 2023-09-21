@@ -3,6 +3,7 @@ import Bolsa from './bolsa';
 import styles from './../themes/theme';
  
 import {
+    Keyboard,
   SafeAreaView,
   ScrollView,   
   Text,Linking,
