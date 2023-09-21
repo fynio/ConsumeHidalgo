@@ -202,13 +202,13 @@ const styles = StyleSheet.create({
   cabecera:{
     marginHorizontal:'5%',
     marginVertical:'4%',
-    fontSize: 34, color: '#BC945B', letterSpacing: 1, fontFamily:'Izmir-Heavy',
+    fontSize: 34, color: '#BC945B', letterSpacing: 1,
     textAlign:'center',
   },
   azul:{
     marginHorizontal:'5%',
     marginVertical:'2%',
-    fontSize: 16, color: '#620C31', letterSpacing: 1, fontFamily:'Izmir-Heavy',
+    fontSize: 16, color: '#620C31', letterSpacing: 1,
     textAlign:'center'
   },
 

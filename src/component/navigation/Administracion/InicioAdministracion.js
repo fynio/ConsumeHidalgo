@@ -1,7 +1,8 @@
 import React, {useEffect} from 'react'; 
 import Bolsa from '../../bolsa';
 import { Button } from 'react-native-paper';
-
+ 
+import { BackHandler } from 'react-native';
 import {
   SafeAreaView,
   ScrollView,  
@@ -9,8 +10,20 @@ import {
   Text,
   View,  
 } from 'react-native';
-const Inicio = ( { navigation }) => { 
 
+// Configura una función para manejar las flechas de retroceso del sistema
+const handleBackButton = () => {
+  // Devuelve true para prevenir el comportamiento predeterminado de retroceso
+  return true;
+};
+
+
+
+const Inicio = ( { navigation }) => { 
+ 
+
+  BackHandler.addEventListener('hardwareBackPress', handleBackButton);
+ 
   return (
       <SafeAreaView style={styles.contenedor}>
         <ScrollView style={{margin:10}}>

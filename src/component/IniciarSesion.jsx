@@ -15,8 +15,8 @@ global.url = "https://consume.hidalgo.gob.mx/API/public/index.php/";
 const IniciarSesion = ( {navigation})=>{
 
     const [escribe, setEscribe] = React.useState(false);
-    const [correo, setCorreo] = React.useState('admin@gmail.com');
-    const [contrasena, setcontrasena] = React.useState('1');
+    const [correo, setCorreo] = React.useState('');
+    const [contrasena, setcontrasena] = React.useState('');
   
 
     const validateEmail = (email) => {
@@ -48,7 +48,7 @@ const IniciarSesion = ( {navigation})=>{
     
             let DATOS = {user: correo, pass: contrasena, origen: Platform.OS === 'ios' ? 2 : 1 };
     
-         
+    
             const response = await axios.post( global.url + 'login/', DATOS);
       
         
@@ -89,7 +89,7 @@ const IniciarSesion = ( {navigation})=>{
 
 
         }catch(e){
-         
+         console.log(e);
         }
     
 
@@ -141,7 +141,6 @@ const IniciarSesion = ( {navigation})=>{
                         style={{ color:'red', backgroundColor:'rgba(200,200,200,0.1)', width:'100%', marginTop: '2%', textAlign: 'center' }}
                         value={contrasena}
                         label="Contraseña"
-                        keyboardType="visible-password"
                         onChangeText={contrasena => setcontrasena(contrasena)}
                         maxLength={108}
                         secureTextEntry={true} 
