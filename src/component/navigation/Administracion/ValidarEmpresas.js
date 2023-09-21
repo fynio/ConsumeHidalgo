@@ -387,7 +387,7 @@ var [logo,setLogo] = useState({});
                     style={{ marginTop: '5%'}}
                     icon="arrow-left"
                     mode="contained"                  
-                    onPress={() => navigation.navigate("InicioAdministracion")}>
+                    onPress={() => navigation.navigate("Administracion")}>
                     Regresar
                 </Button>  
           </View>

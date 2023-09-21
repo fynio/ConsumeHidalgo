@@ -141,7 +141,7 @@ const IniciarSesion = ( {navigation})=>{
                         style={{ color:'red', backgroundColor:'rgba(200,200,200,0.1)', width:'100%', marginTop: '2%', textAlign: 'center' }}
                         value={contrasena}
                         label="Contraseña"
-                        keyboardType="visible-contrasena"
+                        keyboardType="visible-password"
                         onChangeText={contrasena => setcontrasena(contrasena)}
                         maxLength={108}
                         secureTextEntry={true} 

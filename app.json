@@ -15,9 +15,19 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": false,
+      "bundleIdentifier": "com.consumehgosedeco",
+      "buildNumber":"1"
     },
     "android": {
+      "package":"com.consumehgosedeco",
+      "versionCode":"1",
+      "signingConfig": {
+        "storeFile": "key/my-release-key.keystore",
+        "storePassword": "consumehidalgo",
+        "keyAlias": "my-key-alias",
+        "keyPassword": "consumehidalgo"
+    },
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"

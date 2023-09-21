@@ -22,7 +22,7 @@ import AppNavigation from  './AppNavigation';
 function Root({navigation}) {
   return (
     <Drawer.Navigator >
-      <Drawer.Screen name="InicioAdministracion" component={InicioAdministracion} />
+      <Drawer.Screen name="Administracion" component={InicioAdministracion} />
         <Drawer.Screen name="Validar empresas" component={ValidarEmpresas} />
         <Drawer.Screen name="Empresas aprobadas" component={EmpresasAprobadas} />
         <Drawer.Screen name="Estadisticas" component={Estadisticas} />
