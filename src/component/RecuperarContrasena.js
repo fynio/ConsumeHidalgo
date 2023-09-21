@@ -54,7 +54,6 @@ const RecuperarContrasena = ( {navigation} ) => {
             }
           });             
         } catch (error) {
-          console.log(error);
           setValidando(false);
           setEnviado(false);        
           Alert.alert("Servidor sin conexión!",
