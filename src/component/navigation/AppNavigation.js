@@ -6,6 +6,7 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import Inicio from './Usuario/Inicio';
 import Productos from './Usuario/productos';
 import Servicios from './Usuario/servicios';
+import Tutoriales from './Usuario/tutoriales';
 import CerrarSesion from '../CerrarSesion';
 import IniciarSesion from './../IniciarSesion';
 import Principal from './../Principal';
@@ -25,9 +26,11 @@ function Root({navigation}) {
   return (
     <Drawer.Navigator >
       <Drawer.Screen name="Inicio" component={Inicio} />
-       <Drawer.Screen name="Productos" component={Productos} />
-     <Drawer.Screen name="Servicios" component={Servicios} /> 
-     <Drawer.Screen name="Contacto" component={Contacto} /> 
+      <Drawer.Screen name="Productos" component={Productos} />
+      <Drawer.Screen name="Servicios" component={Servicios} /> 
+      <Drawer.Screen name="Tutoriales" component={Tutoriales} /> 
+      <Drawer.Screen name="Contacto" component={Contacto} /> 
+      
      
         <Drawer.Screen name="Cerrar sesion" component={CerrarSesion} />
       
