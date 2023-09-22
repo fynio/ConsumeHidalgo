@@ -5,10 +5,8 @@ import {  Avatar, Searchbar, Button, Text } from 'react-native-paper';
 import { Picker } from '@react-native-picker/picker';
 import MyProducto from './producto';
 import axios from 'axios';
-import { Pages } from 'react-native-pages';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const LeftContent = props => <Avatar.Icon {...props} icon="folder" />
 
 global.url = "https://consume.hidalgo.gob.mx/API/public/index.php/";
 const Productos = ({ navigation }) => {

@@ -1,15 +1,10 @@
 /* eslint-disable prettier/prettier */
 import React, { useState, useEffect } from 'react';
-import { ActivityIndicator, Alert, Dimensions, ScrollView, StyleSheet, View} from 'react-native';
-import {  Avatar,  Button, Searchbar, Text } from 'react-native-paper';
-import { Picker } from '@react-native-picker/picker';
+import { Dimensions, SafeAreaView, FlatList, ScrollView, StyleSheet, View} from 'react-native';
+import {Text } from 'react-native-paper';
 //import MyProducto from './producto';
 import axios from 'axios';
-import { Pages } from 'react-native-pages';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import Video from 'react-native-video';
 import WebView from 'react-native-webview';
-import { collapsable } from 'deprecated-react-native-prop-types/DeprecatedViewPropTypes';
 
 global.url = "https://consume.hidalgo.gob.mx/API/public/index.php/";
 const ScreenWidth = Dimensions.get('window').width;
@@ -25,7 +20,6 @@ const Tutoriales = ({ navigation }) => {
 
       const getTutoriales = async () => {
         
-        const storedToken = await AsyncStorage.getItem('@token');
         const url = global.url + "tutoriales/";
         try {
              
@@ -38,57 +32,49 @@ const Tutoriales = ({ navigation }) => {
         }
     }   
 
- 
-    return (
-        <View>
-        <ScrollView style={{
-            paddingHorizontal:20,
+    const renderItem = ({ item }) => (
+        <View style={{flex:1, paddingVertical:20,  display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+          <Text style={{
+            color: '#620C31',
+            paddingVertical: 20,
+            fontSize: 21,
+            textAlign: 'justify',
+            width: ScreenWidth * 0.8,
+          }}>
+            {item.nombre_tutorial}
+          </Text> 
+          <WebView
+            source={{ uri: item.url_tutorial }}
+            style={styles.webview}
+            startInLoadingState={true}
+            scalesPageToFit={true}   
+            javaScriptEnabled={true}
+        domStorageEnabled={true}
+          />
 
-
-        }}>  
-  
-              {
-               tutoriales.map((item)=>{
-
-                return(
-                    <View style={{
-                        display:'flex',
-                        flexDirection:'column',
-                        alignItems:'center',
-                    }}>
-                        <Text style={{  
-                            color: '#620C31',
-                            paddingVertical:20,
-                            fontSize:21,
-                            textAlign:'justify',
-                            width:ScreenWidth*0.8,
-                    }}>
-                        {item.nombre_tutorial}</Text>
-                        <WebView
-                        source={{ uri: item.url_tutorial }}
-                        style={styles.webview}
-                        />
-
-                        <Text></Text>
-                        <Text></Text>
-                    </View>
-                )
-
-
-                
-                })
-
-               
-              }
-
-
-
-
-
-
-
-        </ScrollView>
+        
+           
         </View>
+      );
+
+      
+
+
+    return (
+  <SafeAreaView style={{flex:1}}>
+   
+      <Text>Tutoriales</Text>
+
+      <FlatList
+      data={tutoriales}
+      keyExtractor={(item, index) => `WebView${index}`} // Utiliza un identificador único como key
+      renderItem={renderItem}
+
+      />
+
+    <Text>.</Text>
+
+  </SafeAreaView>
     );
 };
 const styles = StyleSheet.create({

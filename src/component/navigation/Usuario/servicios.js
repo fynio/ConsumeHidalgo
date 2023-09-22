@@ -5,7 +5,6 @@ import {  Avatar, Searchbar, Button, Text } from 'react-native-paper';
 import { Picker } from '@react-native-picker/picker';
 import MyProducto from './producto';
 import axios from 'axios';
-import { Pages } from 'react-native-pages';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const LeftContent = props => <Avatar.Icon {...props} icon="folder" />
@@ -200,13 +199,16 @@ const Productos = ({ navigation }) => {
             }
 
 
-        <Pages containerStyle={{backgroundColor:'white',marginTop:'5%', height:450, marginVertical:'2%',}} indicatorColor={'#620C31'} >
+            <ScrollView containerStyle={{backgroundColor:'white',marginTop:'5%', height:450, marginVertical:'2%',}} indicatorColor={'#620C31'} >
                 {dataTarjeta.map((tarjeta) => {                    
                     return (
                         <MyProducto myId={tarjeta.tid} titulo={tarjeta.titulo} descripcion={tarjeta.descripcion} sucursales={tarjeta.sucursales} direcciones={tarjeta.direcciones} masinformacion={tarjeta.masinformacion} key={'contenedor' + tarjeta.tid} />
                     );
                 })}
-        </Pages>
+        </ScrollView>
+
+
+ 
 
 
 

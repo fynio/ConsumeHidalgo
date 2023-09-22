@@ -32,11 +32,12 @@ const MyCard = (props) => {
     
 
     return (
-        <View style={{height:400}}>
-        <TouchableOpacity onPress={() => setModalVisible(!modalVisible)}>
-            <ScrollView>
+        <View style={{backgroundColor:'white', paddingVertical:20}}>
+        <TouchableOpacity  onPress={() => setModalVisible(!modalVisible)}>
+            <ScrollView >
             <Card>
                 <Card.Content>
+
 
                 {logops ==='https://consume.hidalgo.gob.mx/logo_negocio/' + props.masinformacion.logo ?
                             <View style={{display:'flex', flexDirection:'column', alignItems:'center', width:'100%'}}>
@@ -44,14 +45,16 @@ const MyCard = (props) => {
                                 />
                             </View>
                                 :
-                            <View>
-                                <Avatar.Image style={{border:10, borderColor:'red', display:'flex'}} marginVertical='3%' size={80} source={{ uri: '' + props.masinformacion.logo }}
+                            <View style={{display:'flex', flexDirection:'column', alignItems:'center', width:'100%'}}>
+                                <Avatar.Image style={{border:10, borderStyle:'solid', borderColor:'red', display:'flex'}} marginVertical='3%' size={80} source={{ uri: '' + props.masinformacion.logo }}
                                 />                                
                             </View> 
                             }
+                            <Text></Text>
 
-
-                    <Title style={{ color: 'rgba(160,33,66,1)', }}>{props.titulo}</Title>
+                    <Title style={{ fontWeight:'bold', textTransform:'uppercase',  textAlign:'center', width:'100%', color: 'rgba(160,33,66,1)', paddingHorizontal:20 }}>{props.titulo}</Title>
+                    <Text></Text>
+                    <Text></Text>
                     <Paragraph style={{textAlign: 'justify', marginBottom: 10}}>{props.descripcion}</Paragraph>
                      {/* <View style={styles.container}> */}
                             {/* <View style={[styles.box, styles.box1]}> */}
@@ -66,8 +69,7 @@ const MyCard = (props) => {
                                         <Text style={{ color: 'black', fontStyle: 'italic' }} key={'sucursal' + i}>{sucursal}</Text>
                                     );
                                 })}
-                            {/* </View> */}
-                            {/* <View style={[styles.box, styles.box2]}> */}
+                         
                                 <Text style={{ color: 'rgba(160,33,66,1)', fontWeight: 'bold', }}>Direccion:</Text>
                                 {props.direcciones.map((direccion, i) => {
                                     return(
@@ -87,6 +89,15 @@ const MyCard = (props) => {
                                     );
                                 })}
 
+<View>
+<Text></Text>
+<Text></Text>
+<Text style={{width:'100%',  
+  backgroundColor:'rgb(188,149,91)'}}></Text>
+
+</View>
+
+
                             {/* </View>  */}
                      {/* </View>  */}
                 </Card.Content>
@@ -101,8 +112,22 @@ const MyCard = (props) => {
                     onRequestClose={() => {
                         setModalVisible(!modalVisible);
                     }} >
+
+
                     <View style={styles.centeredView}>
-                        <View style={styles.modalView}>                            
+  
+                    <View style={{width:'100%', position:'relative', zIndex:99}} >
+                        <Button 
+                            style={{ position:'absolute', backgroundColor:'#620C31', minHeight:40, minWidth:40, right:0, height:40, width:40,  color:'orange'}}
+                                onPress={() => setModalVisible(!modalVisible)} >
+                                <Text style={{zIndex:999, color:'white'}}>X</Text>
+                                </Button>
+                    </View>
+
+                        <View style={styles.modalView}>    
+
+                        
+                  
                             {logops ==='https://consume.hidalgo.gob.mx/logo_negocio/' +props.masinformacion.logo ?
                             <View>
                                 <Avatar.Image  marginVertical='3%' size={190} source={require('../../../../assets/img/sin_logo.png')}
@@ -116,7 +141,13 @@ const MyCard = (props) => {
                             }
                             <View style={styles.contenedor_contenidoModal}>
                                 <View style={styles.box}>
-                                    <Text style={{ color: 'rgba(160,33,66,1)', fontWeight: 'bold', }}>Horario de Atención:</Text>
+                                  {
+                                    props.masinformacion.horario.length>=1?<Text style={{ color: 'rgba(160,33,66,1)', fontWeight: 'bold', }}>Horario de Atención:</Text>
+                                    :<View></View>
+                                }
+                                 
+
+                           
                                     {                                        
                                          //{cargarListado(props.masinformacion.horario)} 
                                          props.masinformacion.horario.map((horariod, i) => {
@@ -127,7 +158,11 @@ const MyCard = (props) => {
                                     }
                                 </View>
                                 <View style={styles.box2}>
-                                    <Text style={{ color: 'rgba(160,33,66,1)', fontWeight: 'bold', }}>Métodos de Pago:</Text>
+                                {
+                                    props.masinformacion.metodospago.length>=1?  <Text style={{ color: 'rgba(160,33,66,1)', fontWeight: 'bold', }}>Métodos de Pago:</Text>
+                                    :<View></View>
+                                }
+                                  
                                     {
                                         /* {cargarListado(props.masinformacion.metodospago)} */
                                          props.masinformacion.metodospago.map((metodopago, i) => {
@@ -241,11 +276,7 @@ const MyCard = (props) => {
                                     <View></View>
                                 }
                             </View>
-                            <Pressable
-                                style={[styles.button, styles.buttonClose]}
-                                onPress={() => setModalVisible(!modalVisible)} >
-                                <Text style={{ color: 'white', fontWeight: 'bold', }}>Seguir explorando</Text>
-                            </Pressable>
+                       
                         </View>
                     </View>
                 </Modal>
