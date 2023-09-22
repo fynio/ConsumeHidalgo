@@ -10,14 +10,14 @@ import CerrarSesion from '../CerrarSesion';
 import IniciarSesion from './../IniciarSesion';
 import Principal from './../Principal';
 import Registrarme from './../Registrarme'; 
-import Contacto from './../Contacto'; 
+import Contacto from '../Contacto'; 
 import RecuperarContrasena from  './../RecuperarContrasena'; 
-
+ 
 const Drawer = createDrawerNavigator();
 const Stack = createNativeStackNavigator();
 
  
- 
+  
 import AdminNavigation from  './AdminNavigation'; 
  
 
@@ -28,7 +28,7 @@ function Root({navigation}) {
        <Drawer.Screen name="Productos" component={Productos} />
      <Drawer.Screen name="Servicios" component={Servicios} /> 
      <Drawer.Screen name="Contacto" component={Contacto} /> 
-        
+     
         <Drawer.Screen name="Cerrar sesion" component={CerrarSesion} />
       
     </Drawer.Navigator>

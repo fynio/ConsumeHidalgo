@@ -18,7 +18,7 @@ const Cf = ( ) => {
     topImage:{height: 220, width: 190 },
     titulo:{marginHorizontal:'2%', alignItems:'center', marginTop:10},
     consume:{ fontSize: 35, color: '#050545', letterSpacing: 1 },
-    hidalgo:{ fontSize: 35, color: '#0080dc', letterSpacing: 1},
+    hidalgo:{ fontSize: 35, color: 'rgba(160,33,66,1)', letterSpacing: 1},
  });
 
 export default Cf;

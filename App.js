@@ -2,7 +2,6 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
-import { createDrawerNavigator } from '@react-navigation/drawer';
 import AdminNavigation from './src/component/navigation/AdminNavigation'
 import AppNavigation from './src/component/navigation/AppNavigation'
 import IniciarSesion from './src/component/IniciarSesion';

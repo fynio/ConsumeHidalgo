@@ -37,13 +37,27 @@ const MyCard = (props) => {
             <ScrollView>
             <Card>
                 <Card.Content>
-                <Title style={{ color: '#0080dc', }}>{props.titulo}</Title>
+
+                {logops ==='https://consume.hidalgo.gob.mx/logo_negocio/' + props.masinformacion.logo ?
+                            <View style={{display:'flex', flexDirection:'column', alignItems:'center', width:'100%'}}>
+                                <Avatar.Image  style={{border:10, borderColor:'red'}} marginVertical='3%' size={80} source={require('../../../../assets/img/sin_logo.png')}
+                                />
+                            </View>
+                                :
+                            <View>
+                                <Avatar.Image style={{border:10, borderColor:'red', display:'flex'}} marginVertical='3%' size={80} source={{ uri: '' + props.masinformacion.logo }}
+                                />                                
+                            </View> 
+                            }
+
+
+                    <Title style={{ color: 'rgba(160,33,66,1)', }}>{props.titulo}</Title>
                     <Paragraph style={{textAlign: 'justify', marginBottom: 10}}>{props.descripcion}</Paragraph>
                      {/* <View style={styles.container}> */}
                             {/* <View style={[styles.box, styles.box1]}> */}
                                 
                                 {props.sucursales.length?
-                                    <Text style={{ color: '#0080dc', fontWeight: 'bold', }}>Sucursales:</Text>
+                                    <Text style={{ color: 'rgba(160,33,66,1)', fontWeight: 'bold', }}>Sucursales:</Text>
                                 :
                                     <View></View>
                                 }                                
@@ -54,7 +68,7 @@ const MyCard = (props) => {
                                 })}
                             {/* </View> */}
                             {/* <View style={[styles.box, styles.box2]}> */}
-                                <Text style={{ color: '#0080dc', fontWeight: 'bold', }}>Direccion:</Text>
+                                <Text style={{ color: 'rgba(160,33,66,1)', fontWeight: 'bold', }}>Direccion:</Text>
                                 {props.direcciones.map((direccion, i) => {
                                     return(
                                         <Text style={{ color: 'black', fontStyle: 'italic' }} key={'direccion' + i}>{direccion}</Text>
@@ -63,7 +77,7 @@ const MyCard = (props) => {
 
                                
                                {props.masinformacion.metodosentrega.length?
-                                <Text style={{ color: '#0080dc', fontWeight: 'bold', }}>Métodos de entrega:</Text>
+                                <Text style={{ color: 'rgba(160,33,66,1)', fontWeight: 'bold', }}>Métodos de entrega:</Text>
                                 :
                                 <View></View>
                                }                                
@@ -89,7 +103,7 @@ const MyCard = (props) => {
                     }} >
                     <View style={styles.centeredView}>
                         <View style={styles.modalView}>                            
-                            {logops ==='https://dev.upmh.edu.mx/consumeHidalgo/logo_negocio/'?
+                            {logops ==='https://consume.hidalgo.gob.mx/logo_negocio/' +props.masinformacion.logo ?
                             <View>
                                 <Avatar.Image  marginVertical='3%' size={190} source={require('../../../../assets/img/sin_logo.png')}
                                 />
@@ -102,7 +116,7 @@ const MyCard = (props) => {
                             }
                             <View style={styles.contenedor_contenidoModal}>
                                 <View style={styles.box}>
-                                    <Text style={{ color: '#0080dc', fontWeight: 'bold', }}>Horario de Atención:</Text>
+                                    <Text style={{ color: 'rgba(160,33,66,1)', fontWeight: 'bold', }}>Horario de Atención:</Text>
                                     {                                        
                                          //{cargarListado(props.masinformacion.horario)} 
                                          props.masinformacion.horario.map((horariod, i) => {
@@ -113,7 +127,7 @@ const MyCard = (props) => {
                                     }
                                 </View>
                                 <View style={styles.box2}>
-                                    <Text style={{ color: '#0080dc', fontWeight: 'bold', }}>Métodos de Pago:</Text>
+                                    <Text style={{ color: 'rgba(160,33,66,1)', fontWeight: 'bold', }}>Métodos de Pago:</Text>
                                     {
                                         /* {cargarListado(props.masinformacion.metodospago)} */
                                          props.masinformacion.metodospago.map((metodopago, i) => {
@@ -252,7 +266,7 @@ const styles = StyleSheet.create({
     centeredView: { flex: 1, justifyContent: "center", alignItems: "center", marginTop: 22 },
     modalView: { margin: 10, backgroundColor: "white", borderRadius: 20, padding: 10, alignItems: "center", shadowColor: "#000", shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.25, shadowRadius: 4, elevation: 5 },
     button: { borderRadius: 20, padding: 10, elevation: 2, marginTop: '5%', },
-    buttonClose: { backgroundColor: "#2196F3", },
+    buttonClose: { backgroundColor: "rgba(105, 28, 49, 1)", },
     textStyle: { color: "black", fontWeight: "bold", textAlign: "center" },
     imagenModal: { width: 200, height: 200, marginBottom: '1%', marginTop: '2%', },
 
@@ -271,12 +285,12 @@ const styles = StyleSheet.create({
         marginTop:10
     },
     red1: {
-        backgroundColor: '#2196F3',
+        backgroundColor: 'rgba(105, 28, 49, 1)',
         height: '100%',
         marginHorizontal: '2%',
     },
     red2: {
-        backgroundColor: '#8BC34A',
+        backgroundColor: 'rgba(221,201,163,1)',
         height: '100%',
         marginHorizontal: '2%',
     },

@@ -209,16 +209,16 @@ const Productos = ({ navigation }) => {
             }
 
 
-        <Pages containerStyle={{backgroundColor:'white',marginTop:'5%', height:450, marginVertical:'2%',}} indicatorColor={'#620C31'} >
+        <ScrollView containerStyle={{backgroundColor:'white',marginTop:'5%', height:450, marginVertical:'2%',}} indicatorColor={'#620C31'} >
                 {dataTarjeta.map((tarjeta) => {                    
                     return (
                         <MyProducto myId={tarjeta.tid} titulo={tarjeta.titulo} descripcion={tarjeta.descripcion} sucursales={tarjeta.sucursales} direcciones={tarjeta.direcciones} masinformacion={tarjeta.masinformacion} key={'contenedor' + tarjeta.tid} />
                     );
                 })}
-        </Pages>
+        </ScrollView>
 
 
-
+ 
 
 
 

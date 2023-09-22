@@ -15,8 +15,8 @@ global.url = "https://consume.hidalgo.gob.mx/API/public/index.php/";
 const IniciarSesion = ( {navigation})=>{
 
     const [escribe, setEscribe] = React.useState(false);
-    const [correo, setCorreo] = React.useState('');
-    const [contrasena, setcontrasena] = React.useState('');
+    const [correo, setCorreo] = React.useState('consumehidalgo@gmail.com');
+    const [contrasena, setcontrasena] = React.useState('consume9128');
   
 
     const validateEmail = (email) => {
