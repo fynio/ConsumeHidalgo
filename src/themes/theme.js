@@ -1,6 +1,7 @@
 
-import { StyleSheet} from 'react-native';
-  
+import { Dimensions, StyleSheet} from 'react-native';
+const ScreenWidth = Dimensions.get('window').width;
+const ScreenHight = Dimensions.get('window').height;
 const styles = StyleSheet.create({
     tituloText:{ 
         marginVertical:'4%',
@@ -100,6 +101,71 @@ rowEnd: {
   TextoBoton:{
     color:'white',
   },
+
+
+// TUTORIALES
+
+  webviewPrincipal: {
+    display:'flex',
+    flexDirection:'column',
+    alignItems:'center',
+    justifyContent:'center',
+    width: ScreenWidth,
+    height:'84%'
+
+  },
+
+
+
+
+
+
+  ContainerNavegationButtons:{
+    display:'flex',
+    flexDirection:'row',
+    alignItems:'center',
+    justifyContent:'space-between',
+    width:ScreenWidth * .8,  
+  },
+
+
+
+  BotonNavegacionIzq:{
+    width:45,
+    height:65,
+    display:'flex',
+    alignItems:'center',
+    justifyContent:'center',  
+    borderTopLeftRadius:34,
+    borderTopRightRadius:34,
+    borderBottomRightRadius:34,
+    borderBottomLeftRadius:34,
+    backgroundColor:'#620C31',
+    fontSize:30,
+    paddingLeft:10,
+  },
+  BotonNavegacionDer:{
+    width:45,
+    height:65,
+    display:'flex',
+    alignItems:'center',
+    justifyContent:'center',  
+    borderTopLeftRadius:34,
+    borderTopRightRadius:34,
+    borderBottomRightRadius:34,
+    borderBottomLeftRadius:34,
+    backgroundColor:'#620C31',
+    fontSize:30,
+    paddingLeft:20,
+  },
+  WebviewTheme: {
+    width:ScreenWidth*0.8, 
+    height:((ScreenWidth*0.8)/16),
+    maxHeight:((ScreenWidth*0.8)/16)*9,
+    backgroundColor:'orange',
+  },   
+
+
 })
 
 export default styles
