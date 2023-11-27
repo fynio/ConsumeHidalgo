@@ -1,28 +1,19 @@
-import React, {useState, useEffect} from 'react';
-import { Button } from 'react-native-paper';
-
-
+import React, { useEffect} from 'react'; 
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
 
 import {
   SafeAreaView,
   ScrollView,  
-  StyleSheet,
-  FlatList,
-  Text,
-  TextInput,
-  View,
-  ActivityIndicator,
+  StyleSheet, 
+  View,Text, Alert
 } from 'react-native';
 
-import {
-  LineChart,
+ 
+
+import { 
   BarChart,
-  PieChart,
-  ProgressChart,
-  ContributionGraph,
-  StackedBarChart
+  PieChart, 
 } from "react-native-chart-kit";
 
 import { Dimensions } from "react-native";
@@ -31,12 +22,8 @@ import {Picker} from '@react-native-picker/picker';
 const Estadisticas = ( { navigation }) => {
   const screenWidth = Dimensions.get("window").width;
   global.url = "https://consume.hidalgo.gob.mx/API/public/index.php/";
-  const [validando, setValidando] = React.useState(false);
   
-  const [version, setVersion] = React.useState(false);
   const [datos, setDatos] = React.useState([]);
-  const [negocio, setNegocio] = React.useState(null);
-
   const irProductos = ()=>{  navigation.navigate("Productos") }
   const irServicios = ()=>{  navigation.navigate("Servicios") }
   const [opcion, setOpcion] = React.useState(1);
@@ -81,9 +68,7 @@ const Estadisticas = ( { navigation }) => {
     }
   ]);
   const colores = ["#76D7C4","#EBDEF0","#FADBD8","#F5B7B1","#F9EBEA","#C0392B","#C39BD3","#070707","#B03A2E","#17A589","#512E5F","#E74C3C","#A3E4D7","#F9EBEA","#F5EEF8","#117864","#FF1100","#0E6251","#AF7AC5","#A93226","#E8F8F5","#7B241C","#9B59B6","#FDEDEC","#922B21","#D98880","#F5B7B1","#943126","#D1F2EB","#76448A","#1ABC9C","#CB4335","#E6B0AA","#884EA0","#633974","#13CDF7","#48C9B0","#D7BDE2","#148F77","#F5B7B1","#641E16","#CD6155","#FFC300","#78281F"];
-
-  const [extraData, setExtraData] = useState(new Date());
-  const [refreshing, setRefreshing] = useState(true);
+ 
   
   
   const chartConfig = {
@@ -316,6 +301,7 @@ const getDatosSector = async () => {
       setDatos(datos_);
       setDataPie(datospie_);
   } catch (error) {
+    Alert.alert(JSON.stringify(error));
       //Estrategia de cache
   }
 }
@@ -350,42 +336,53 @@ const getDatosSubsector = async () => {
       setDataPie(datospie_);
   } catch (error) {
       //Estrategia de cache
+      
+    Alert.alert(JSON.stringify(error));
   }
 }
 
 
 const getDatos = async (itemValue) => {
   
-  setLabels([])
+  try {
+  if(itemValue!='')
+  {
+    setLabels([])
       
-  setDatos([]);
-  setDataPie([]);
-  setOpcion(itemValue)
-  if(itemValue == 1){
-    setTypeChart(1);
-    getDatosRegion();
-  }else if(itemValue == 2){
-    setTypeChart(1);
-    getDatosMunicipio();
-  }else if(itemValue == 3){
-    setTypeChart(2);
-    getDatosSexo();
-  }else if(itemValue == 4){
-    setTypeChart(1);
-    getDatosTamano();
-  }else if(itemValue == 5){
-    setTypeChart(2);
-    getDatosTipoUsuario();
-  }else if(itemValue == 6){
-    setTypeChart(1);
-    getDatosEmpleosConservados();
-  }else if(itemValue == 7){
-    setTypeChart(2);
-    getDatosSector();
-  }else if(itemValue == 8){
-    setTypeChart(1);
-    getDatosSubsector();
+    setDatos([]);
+    setDataPie([]);
+    setOpcion(itemValue)
+    if(itemValue == 1){
+      setTypeChart(1);
+      getDatosRegion();
+    }else if(itemValue == 2){
+      setTypeChart(1);
+      getDatosMunicipio();
+    }else if(itemValue == 3){
+      setTypeChart(2);
+      getDatosSexo();
+    }else if(itemValue == 4){
+      setTypeChart(1);
+      getDatosTamano();
+    }else if(itemValue == 5){
+      setTypeChart(2);
+      getDatosTipoUsuario();
+    }else if(itemValue == 6){
+      setTypeChart(1);
+      getDatosEmpleosConservados();
+    }else if(itemValue == 7){
+      setTypeChart(2);
+      getDatosSector();
+    }else if(itemValue == 8){
+      setTypeChart(1);
+      getDatosSubsector();
+    }
   }
+} catch (error) {
+  //Estrategia de cache
+  
+Alert.alert(JSON.stringify(error));
+}
 }
 
 
@@ -403,7 +400,7 @@ const getDatos = async (itemValue) => {
               <Picker
                 selectedValue={opcion}
                 style={{backgroundColor:'white'}}
-                onValueChange={(itemValue, itemIndex) =>
+                onValueChange={(itemValue) =>
                   getDatos(itemValue)
                 }>
                 <Picker.Item label="Usuarios registrados por región" value="1" color="black" backgroundColor='grey' />
@@ -480,7 +477,7 @@ const getDatos = async (itemValue) => {
                 center={[10, 10]}
                 absolute
               />}
-              </View>:<View><ActivityIndicator color={"#000000"} height={50} /></View>}
+              </View>:<View><Text>..Cargando</Text></View>}
           </View>
       </SafeAreaView>
   );
