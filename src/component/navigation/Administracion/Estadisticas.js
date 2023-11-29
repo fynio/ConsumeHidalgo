@@ -26,7 +26,7 @@ const Estadisticas = ( { navigation }) => {
   const [datos, setDatos] = React.useState([]);
   const irProductos = ()=>{  navigation.navigate("Productos") }
   const irServicios = ()=>{  navigation.navigate("Servicios") }
-  const [opcion, setOpcion] = React.useState(1);
+  const [opcion, setOpcion] = React.useState(0);
   const [typeChart, setTypeChart] = React.useState(1);
 
   const [labels, setLabels] = React.useState([]);
@@ -69,7 +69,7 @@ const Estadisticas = ( { navigation }) => {
   ]);
   const colores = ["#76D7C4","#EBDEF0","#FADBD8","#F5B7B1","#F9EBEA","#C0392B","#C39BD3","#070707","#B03A2E","#17A589","#512E5F","#E74C3C","#A3E4D7","#F9EBEA","#F5EEF8","#117864","#FF1100","#0E6251","#AF7AC5","#A93226","#E8F8F5","#7B241C","#9B59B6","#FDEDEC","#922B21","#D98880","#F5B7B1","#943126","#D1F2EB","#76448A","#1ABC9C","#CB4335","#E6B0AA","#884EA0","#633974","#13CDF7","#48C9B0","#D7BDE2","#148F77","#F5B7B1","#641E16","#CD6155","#FFC300","#78281F"];
  
-  
+   
   
   const chartConfig = {
     backgroundGradientFrom: "#1E2923",
@@ -82,8 +82,7 @@ const Estadisticas = ( { navigation }) => {
     useShadowColorFromDataset: false // optional
   };
   
-
-  useEffect(() => { getDatosRegion();},[]);
+ 
 
 const getDatosRegion = async () => {
 
@@ -108,12 +107,12 @@ const getDatosRegion = async () => {
       }
       labels_.push(``)
       datos_.push(0);
-      setLabels(labels_)
+    await  setLabels(labels_)
       
-      setDatos(datos_);
-      setDataPie(datospie_);
+    await  setDatos(datos_);
+      await setDataPie(datospie_);
   } catch (error) {
-      //Estrategia de cache
+    Alert.alert(JSON.stringify(error));
   }
 }
 
@@ -147,7 +146,7 @@ const getDatosMunicipio = async () => {
       setDatos(datos_);
       setDataPie(datospie_);
   } catch (error) {
-      //Estrategia de cache
+    Alert.alert(JSON.stringify(error));
   }
 }
 
@@ -177,7 +176,7 @@ const getDatosSexo = async () => {
       setDatos(datospie_);
       setDataPie(datospie_);
   } catch (error) {
-      //Estrategia de cache
+    Alert.alert(JSON.stringify(error));e
   }
 }
 
@@ -209,7 +208,7 @@ const getDatosTamano = async () => {
       setDatos(datos_);
       setDataPie(datospie_);
   } catch (error) {
-      //Estrategia de cache
+    Alert.alert(JSON.stringify(error));
   }
 }
 
@@ -239,7 +238,7 @@ const getDatosTipoUsuario = async () => {
       setDatos(datos_);
       setDataPie(datospie_);
   } catch (error) {
-      //Estrategia de cache
+    Alert.alert(JSON.stringify(error));
   }
 }
 
@@ -271,7 +270,7 @@ const getDatosEmpleosConservados = async () => {
       setDatos(datos_);
       setDataPie(datospie_);
   } catch (error) {
-      //Estrategia de cache
+    Alert.alert(JSON.stringify(error));
   }
 }
 
@@ -345,37 +344,43 @@ const getDatosSubsector = async () => {
 const getDatos = async (itemValue) => {
   
   try {
-  if(itemValue!='')
-  {
+        
     setLabels([])
       
     setDatos([]);
     setDataPie([]);
-    setOpcion(itemValue)
+
+  if(itemValue!=0  && itemValue!=undefined)
+  {
+   await  setLabels([])
+      
+   await setDatos([]);
+   await  setDataPie([]);
+
     if(itemValue == 1){
-      setTypeChart(1);
-      getDatosRegion();
+     await setTypeChart(1);
+     await  getDatosRegion();
     }else if(itemValue == 2){
-      setTypeChart(1);
-      getDatosMunicipio();
+      await    setTypeChart(1);
+      await   getDatosMunicipio();
     }else if(itemValue == 3){
-      setTypeChart(2);
-      getDatosSexo();
+      await   setTypeChart(2);
+      await     getDatosSexo();
     }else if(itemValue == 4){
-      setTypeChart(1);
-      getDatosTamano();
+      await   setTypeChart(1);
+      await   getDatosTamano();
     }else if(itemValue == 5){
-      setTypeChart(2);
-      getDatosTipoUsuario();
+      await    setTypeChart(2);
+      await   getDatosTipoUsuario();
     }else if(itemValue == 6){
-      setTypeChart(1);
-      getDatosEmpleosConservados();
+      await   setTypeChart(1);
+      await   getDatosEmpleosConservados();
     }else if(itemValue == 7){
-      setTypeChart(2);
-      getDatosSector();
+      await   setTypeChart(2);
+      await  getDatosSector();
     }else if(itemValue == 8){
-      setTypeChart(1);
-      getDatosSubsector();
+      await  setTypeChart(1);
+      await   getDatosSubsector();
     }
   }
 } catch (error) {
@@ -400,9 +405,8 @@ Alert.alert(JSON.stringify(error));
               <Picker
                 selectedValue={opcion}
                 style={{backgroundColor:'white'}}
-                onValueChange={(itemValue) =>
-                  getDatos(itemValue)
-                }>
+                onValueChange={(itemValue) =>getDatos(itemValue)}>
+                <Picker.Item label="Seleccione una opción" value="0" color="black" backgroundColor='grey' />
                 <Picker.Item label="Usuarios registrados por región" value="1" color="black" backgroundColor='grey' />
                 <Picker.Item label="Usuarios registrados por municipio" value="2" color="black" backgroundColor='grey'/>
                 <Picker.Item label="Usuarios registros por sexo" value="3" color="black" backgroundColor='grey'/>
@@ -412,7 +416,7 @@ Alert.alert(JSON.stringify(error));
                 <Picker.Item label="Empresas agrupadas por Sector" value="7" color="black" backgroundColor='grey'/>
                 <Picker.Item label="Empresas agrupadas por Subsector" value="8" color="black" backgroundColor='grey'/>
               </Picker>
-              {datos.length > 0?
+              {datos.length  > 0 && datapie.length>0 && labels.length>0 && datos!= undefined?
               <View>{typeChart == 1?
                 <ScrollView
                   horizontal={true}
@@ -465,6 +469,9 @@ Alert.alert(JSON.stringify(error));
                   />
               
               </ScrollView>:
+              <ScrollView
+                  horizontal={true}
+                  >
               <PieChart
                 data={datapie}
                 width={screenWidth}
@@ -476,8 +483,14 @@ Alert.alert(JSON.stringify(error));
                 paddingLeft={"15"}
                 center={[10, 10]}
                 absolute
-              />}
-              </View>:<View><Text>..Cargando</Text></View>}
+              />
+              
+              </ScrollView>
+              }
+
+
+              
+              </View>:<View><Text>...</Text></View>}
           </View>
       </SafeAreaView>
   );

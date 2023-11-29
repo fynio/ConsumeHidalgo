@@ -17,9 +17,9 @@
     "ios": {
       "supportsTablet": false
     },
-    "android": {       
+    "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-ic on.png",
+        "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
       "package": "com.consume.ConsumeHidalgo"
