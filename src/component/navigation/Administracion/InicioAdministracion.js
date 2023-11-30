@@ -2,13 +2,14 @@ import React, {useEffect} from 'react';
 import Bolsa from '../../bolsa';
 import { Button } from 'react-native-paper';
  
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { BackHandler } from 'react-native';
 import {
   SafeAreaView,
   ScrollView,  
   StyleSheet,
   Text,
-  View,  
+  View,  TouchableOpacity,Linking
 } from 'react-native';
 
 // Configura una función para manejar las flechas de retroceso del sistema
@@ -18,10 +19,27 @@ const handleBackButton = () => {
 };
 
 
-
-const Inicio = ( { navigation }) => { 
+const Inicio =  ( { navigation }) => { 
  
 
+const [token, setToken] = React.useState("");
+ 
+  useEffect(() => {
+    getToken();},[]); 
+
+
+  const getToken = async () => {
+ 
+      const storedToken = await AsyncStorage.getItem('@token');
+     await  setToken(storedToken);
+    try {
+
+    } catch (error) {
+  
+        //Estrategia de cache
+    }
+  }
+  
   BackHandler.addEventListener('hardwareBackPress', handleBackButton);
  
   return (
@@ -51,13 +69,16 @@ const Inicio = ( { navigation }) => {
                 </Button>                
        
                 <Text></Text>        
-                <Button  style= {styles.dorado}
+             
+                <TouchableOpacity onPress={() => Linking.openURL("https://consume.hidalgo.gob.mx/estadisticas.php?4dmin=" + token)}> 
+                    <Button style={{color:'rgb(0,0,255)'}}  mode="outlined" >
+                    Estadisticas
+                        </Button> 
 
-                    icon="finance"
-                    mode="contained"                  
-                    onPress={() => navigation.navigate("Estadisticas")}>
-                  Estadisticas
-                </Button>                
+
+                </TouchableOpacity>
+
+
               </View>
             
             </View>

@@ -6,7 +6,7 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import InicioAdministracion from './Administracion/InicioAdministracion';
 import ValidarEmpresas from './Administracion/ValidarEmpresas';
 import EmpresasAprobadas from './Administracion/EmpresasAprobadas';
-import Estadisticas from './Administracion/Estadisticas';
+//import Estadisticas from './Administracion/Estadisticas';
 import CerrarSesion from '../CerrarSesion';
 import IniciarSesion from './../IniciarSesion';
 import RecuperarContrasena from  './../RecuperarContrasena';
@@ -25,7 +25,6 @@ function Root({navigation}) {
       <Drawer.Screen name="Administracion" component={InicioAdministracion} />
         <Drawer.Screen name="Validar empresas" component={ValidarEmpresas} />
         <Drawer.Screen name="Empresas aprobadas" component={EmpresasAprobadas} />
-        <Drawer.Screen name="Estadisticas" component={Estadisticas} />
         
         <Drawer.Screen name="Cerrar sesion" component={CerrarSesion} />
       
