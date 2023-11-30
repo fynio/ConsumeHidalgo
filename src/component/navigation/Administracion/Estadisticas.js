@@ -24,8 +24,8 @@ const Estadisticas = ( { navigation }) => {
   global.url = "https://consume.hidalgo.gob.mx/API/public/index.php/";
   
   const [datos, setDatos] = React.useState([]);
-  const irProductos = ()=>{  navigation.navigate("Productos") }
-  const irServicios = ()=>{  navigation.navigate("Servicios") }
+  const irProductos = ()=>{  navigation.replace("Productos") }
+  const irServicios = ()=>{  navigation.replace("Servicios") }
   const [opcion, setOpcion] = React.useState(0);
   const [typeChart, setTypeChart] = React.useState(1);
 
@@ -141,10 +141,10 @@ const getDatosMunicipio = async () => {
       }
       labels_.push(``)
       datos_.push(0);
-      setLabels(labels_)
+      await   setLabels(labels_)
       
-      setDatos(datos_);
-      setDataPie(datospie_);
+      await setDatos(datos_);
+      await  setDataPie(datospie_);
   } catch (error) {
     Alert.alert(JSON.stringify(error));
   }
@@ -171,10 +171,10 @@ const getDatosSexo = async () => {
       datospie_.push({name:"Mujeres", valor:parseInt(resCat.data[0].Mujeres), color:'blue', legendFontColor: "#7F7F7F", legendFontSize: 15});
       
       
-      setLabels(labels_)
+      await setLabels(labels_)
       
-      setDatos(datospie_);
-      setDataPie(datospie_);
+      await  setDatos(datospie_);
+      await  setDataPie(datospie_);
   } catch (error) {
     Alert.alert(JSON.stringify(error));e
   }
@@ -201,12 +201,15 @@ const getDatosTamano = async () => {
         datos_.push(row.total);
         datospie_.push({'name':row.tamano, 'valor':parseInt(row.total), 'color':colores[datospie_.length]});
       }
+
+
+
       labels_.push(``)
       datos_.push(0);
-      setLabels(labels_)
+      await  setLabels(labels_)
       
-      setDatos(datos_);
-      setDataPie(datospie_);
+      await   setDatos(datos_);
+      await setDataPie(datospie_);
   } catch (error) {
     Alert.alert(JSON.stringify(error));
   }
@@ -233,10 +236,10 @@ const getDatosTipoUsuario = async () => {
         datos_.push(row.total);
         datospie_.push({'name':row.tipo_usuario, 'valor':parseInt(row.total), 'color':colores[datospie_.length]});
       }
-      setLabels(labels_)
+    await   setLabels(labels_)
       
-      setDatos(datos_);
-      setDataPie(datospie_);
+    await    setDatos(datos_);
+    await   setDataPie(datospie_);
   } catch (error) {
     Alert.alert(JSON.stringify(error));
   }
@@ -265,10 +268,10 @@ const getDatosEmpleosConservados = async () => {
       }
       labels_.push(``)
       datos_.push(0);
-      setLabels(labels_)
+      await    setLabels(labels_)
       
-      setDatos(datos_);
-      setDataPie(datospie_);
+      await   setDatos(datos_);
+      await   setDataPie(datospie_);
   } catch (error) {
     Alert.alert(JSON.stringify(error));
   }
@@ -295,10 +298,10 @@ const getDatosSector = async () => {
         datos_.push(row.total);
         datospie_.push({'name':row.categoria_nombre, 'valor':parseInt(row.total), 'color':colores[datospie_.length]});
       }
-      setLabels(labels_)
+      await   setLabels(labels_)
       
-      setDatos(datos_);
-      setDataPie(datospie_);
+      await   setDatos(datos_);
+      await  setDataPie(datospie_);
   } catch (error) {
     Alert.alert(JSON.stringify(error));
       //Estrategia de cache
@@ -329,10 +332,10 @@ const getDatosSubsector = async () => {
       }
       labels_.push(``)
       datos_.push(0);
-      setLabels(labels_)
+      await   setLabels(labels_)
       
-      setDatos(datos_);
-      setDataPie(datospie_);
+      await   setDatos(datos_);
+      await    setDataPie(datospie_);
   } catch (error) {
       //Estrategia de cache
       
