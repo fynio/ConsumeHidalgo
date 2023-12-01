@@ -122,6 +122,7 @@ const getDatosMunicipio = async () => {
   
   const storedToken = await AsyncStorage.getItem('@token');
 
+  
   const url = global.url + "estadistica/Municipio";
   try {
       const resCat = await axios.get(url,{
