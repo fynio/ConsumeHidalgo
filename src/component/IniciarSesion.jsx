@@ -183,9 +183,7 @@ const IniciarSesion = ( {navigation})=>{
                 </View>
             </ScrollView>
         </TouchableWithoutFeedback>
-    
-      
-
+     
     )
 }
 
