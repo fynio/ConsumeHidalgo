@@ -5,13 +5,13 @@ const ScreenHight = Dimensions.get('window').height;
 const styles = StyleSheet.create({
     tituloText:{ 
         marginVertical:'4%',
-        fontSize: 28, color: '#620C31', letterSpacing: 1
+        fontSize: 28, color: '#3e4144', letterSpacing: 1
     },
-    topImage:{height: 190, width: 120 },
+    topImage:{height: 190, width: 190 },
     bottomImage:{height: 80, width: 150 },
     titulo:{marginHorizontal:'2%', alignItems:'center', marginTop:10},
     consume:{ fontSize: 35, color: '#050545', letterSpacing: 1, fontFamily:'Izmir-Heavy'},
-    hidalgo:{ fontSize: 35, color: 'rgba(160,33,66,1)', letterSpacing: 1, fontFamily:'Izmir-Heavy'},
+    hidalgo:{ fontSize: 35, color: '#3e4144', letterSpacing: 1, fontFamily:'Izmir-Heavy'},
     input: {
         height: 40,
         margin: 12,
@@ -34,32 +34,32 @@ const styles = StyleSheet.create({
   cabecera:{
     marginHorizontal:'5%',
     marginVertical:'4%',
-    fontSize: 28, color: '#BC945B', letterSpacing: 1
+    fontSize: 28, color: '#6F7271', letterSpacing: 1
   },
   cabecera2:{
     marginHorizontal:'5%',
     marginVertical:'4%',
-    fontSize: 28, color: '#BC945B', letterSpacing: 1
+    fontSize: 28, color: '#6F7271', letterSpacing: 1
   },
 
 
 
 azul:{ 
     marginVertical:'4%',
-    fontSize: 28, color: '#620C31', letterSpacing: 1
+    fontSize: 28, color: '#3e4144', letterSpacing: 1
 },
 azulProductos:{
   marginTop:'-2%',
   marginHorizontal:'5%',
   marginVertical:'4%',
-  fontSize:20, color: '#620C31', letterSpacing: 1
+  fontSize:20, color: '#3e4144', letterSpacing: 1
 },
 
 azulServicios:{
   marginTop:'2%',
   marginHorizontal:'5%',
   marginVertical:'4%',
-  fontSize:20, color: '#620C31', letterSpacing: 1
+  fontSize:20, color: '#3e4144', letterSpacing: 1
 },
 rowEnd: {
   marginTop:'3%',
@@ -85,7 +85,7 @@ rowEnd: {
     marginLeft:10,
   },
   Touchable: {
-    backgroundColor: '#620C31',
+    backgroundColor: '#3e4144',
     borderRadius: 10,
     padding: 10,
     marginBottom: 20,
@@ -140,7 +140,7 @@ rowEnd: {
     borderTopRightRadius:34,
     borderBottomRightRadius:34,
     borderBottomLeftRadius:34,
-    backgroundColor:'#620C31',
+    backgroundColor:'#3e4144',
     fontSize:30,
     paddingLeft:10,
   },
@@ -154,7 +154,7 @@ rowEnd: {
     borderTopRightRadius:34,
     borderBottomRightRadius:34,
     borderBottomLeftRadius:34,
-    backgroundColor:'#620C31',
+    backgroundColor:'#3e4144',
     fontSize:30,
     paddingLeft:20,
   },

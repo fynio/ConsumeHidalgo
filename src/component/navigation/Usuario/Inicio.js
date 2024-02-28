@@ -82,30 +82,30 @@ const styles = StyleSheet.create({
   cabecera:{
     marginHorizontal:'5%',
     marginVertical:'4%',
-    fontSize: 28, color: '#BC945B', letterSpacing: 1
+    fontSize: 28, color: '#6F7271', letterSpacing: 1
   },
   cabecera2:{
     marginHorizontal:'5%',
     marginVertical:'4%',
-    fontSize: 28, color: '#BC945B', letterSpacing: 1
+    fontSize: 28, color: '#6F7271', letterSpacing: 1
   },
 azul:{
   marginHorizontal:'5%',
     marginVertical:'4%',
-    fontSize: 28, color: '#620C31', letterSpacing: 1
+    fontSize: 28, color: '#3e4144', letterSpacing: 1
 },
 azulProductos:{
   marginTop:'-2%',
   marginHorizontal:'5%',
   marginVertical:'4%',
-  fontSize:20, color: '#620C31', letterSpacing: 1
+  fontSize:20, color: '#3e4144', letterSpacing: 1
 },
 
 azulServicios:{
   marginTop:'2%',
   marginHorizontal:'5%',
   marginVertical:'4%',
-  fontSize:20, color: '#620C31', letterSpacing: 1
+  fontSize:20, color: '#3e4144', letterSpacing: 1
 },
 rowEnd: {
   marginTop:'3%',
@@ -131,7 +131,7 @@ rowEnd: {
     marginLeft:10,
   },
   Touchable: {
-    backgroundColor: '#620C31',
+    backgroundColor: '#3e4144',
     borderRadius: 10,
     padding: 10,
     marginBottom: 20,

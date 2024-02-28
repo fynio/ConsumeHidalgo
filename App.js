@@ -11,8 +11,8 @@ import Contacto from './src/component/Contacto';
 import Password from './src/component/RecuperarContrasena';
 
 import { DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
-DefaultTheme.colors.accent = '#BC945B';
-DefaultTheme.colors.primary = '#620C31';
+DefaultTheme.colors.accent = '#6F7271';
+DefaultTheme.colors.primary = '#3e4144';
 
 const App = () =>{
   const Stack = createNativeStackNavigator();  

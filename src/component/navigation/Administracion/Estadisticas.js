@@ -450,7 +450,7 @@ Alert.alert(JSON.stringify(error));
                       backgroundGradientFrom: "#ffffff",
                       backgroundGradientTo: "#ffffff",
                       decimalPlaces: 0, // optional, defaults to 2dp
-                      color: (opacity = 1) => `#620C31`,
+                      color: (opacity = 1) => `#3e4144`,
                       labelColor: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
                       style: {
                         borderRadius: 16,
@@ -517,30 +517,30 @@ const styles = StyleSheet.create({
   cabecera:{
     marginHorizontal:'5%',
     marginVertical:'4%',
-    fontSize: 28, color: '#BC945B', letterSpacing: 1, fontFamily:'Izmir-Heavy',
+    fontSize: 28, color: '#6F7271', letterSpacing: 1, fontFamily:'Izmir-Heavy',
   },
   cabecera2:{
     marginHorizontal:'5%',
     marginVertical:'4%',
-    fontSize: 28, color: '#BC945B', letterSpacing: 1, fontFamily:'Izmir-Heavy',    
+    fontSize: 28, color: '#6F7271', letterSpacing: 1, fontFamily:'Izmir-Heavy',    
   },
 azul:{
   marginHorizontal:'5%',
     marginVertical:'4%',
-    fontSize: 28, color: '#620C31', letterSpacing: 1, fontFamily:'Izmir-Heavy'
+    fontSize: 28, color: '#3e4144', letterSpacing: 1, fontFamily:'Izmir-Heavy'
 },
 azulProductos:{
   marginTop:'-2%',
   marginHorizontal:'5%',
   marginVertical:'4%',
-  fontSize:20, color: '#620C31', letterSpacing: 1, fontFamily:'Izmir-Heavy'
+  fontSize:20, color: '#3e4144', letterSpacing: 1, fontFamily:'Izmir-Heavy'
 },
 
 azulServicios:{
   marginTop:'2%',
   marginHorizontal:'5%',
   marginVertical:'4%',
-  fontSize:20, color: '#620C31', letterSpacing: 1, fontFamily:'Izmir-Heavy'
+  fontSize:20, color: '#3e4144', letterSpacing: 1, fontFamily:'Izmir-Heavy'
 },
 rowEnd: {
   marginTop:'3%',
@@ -566,7 +566,7 @@ rowEnd: {
     marginLeft:10,
   },
   Touchable: {
-    backgroundColor: '#620C31',
+    backgroundColor: '#3e4144',
     borderRadius: 10,
     padding: 10,
     marginBottom: 20,

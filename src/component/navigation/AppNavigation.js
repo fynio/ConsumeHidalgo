@@ -27,7 +27,7 @@ function Root({navigation}) {
       <Drawer.Screen name="Inicio" component={Inicio} />
       <Drawer.Screen name="Productos" component={Productos} />
       <Drawer.Screen name="Servicios" component={Servicios} /> 
-      <Drawer.Screen name="Tutoriales" component={Tutoriales} /> 
+      {/* <Drawer.Screen name="Tutoriales" component={Tutoriales} />  */}
       <Drawer.Screen name="Contacto" component={Contacto} /> 
       
      
@@ -43,7 +43,7 @@ function App({navigation}) {
       <Stack.Navigator   initialRouteName="Inicio"  screenOptions={{ 
         headerShown: false, 
         headerStyle: {
-            backgroundColor: '#620C31'
+            backgroundColor: '#3e4144'
         }, headerTintColor: '#fff', 
       }} >
         <Stack.Screen  name="Consume Hidalgo" component={Root} />

@@ -157,7 +157,7 @@ var [logo,setLogo] = useState({});
               height:'100%',
             }}>
           { negocio?<ScrollView style={{padding:8}}>
-            <Text  style={[{ color:'#620C31', flex:1, }]}>Revisando</Text>
+            <Text  style={[{ color:'#3e4144', flex:1, }]}>Revisando</Text>
             {logo?<Image
                 style={{width: '100%', height: 100, resizeMode: 'contain'}}
                 source={logo}
@@ -291,30 +291,30 @@ const styles = StyleSheet.create({
   cabecera:{
     marginHorizontal:'5%',
     marginVertical:'4%',
-    fontSize: 28, color: '#BC945B', letterSpacing: 1, fontFamily:'Izmir-Heavy',
+    fontSize: 28, color: '#6F7271', letterSpacing: 1, fontFamily:'Izmir-Heavy',
   },
   cabecera2:{
     marginHorizontal:'5%',
     marginVertical:'4%',
-    fontSize: 28, color: '#BC945B', letterSpacing: 1, fontFamily:'Izmir-Heavy',    
+    fontSize: 28, color: '#6F7271', letterSpacing: 1, fontFamily:'Izmir-Heavy',    
   },
 azul:{
   marginHorizontal:'5%',
     marginVertical:'4%',
-    fontSize: 28, color: '#620C31', letterSpacing: 1, fontFamily:'Izmir-Heavy'
+    fontSize: 28, color: '#3e4144', letterSpacing: 1, fontFamily:'Izmir-Heavy'
 },
 azulProductos:{
   marginTop:'-2%',
   marginHorizontal:'5%',
   marginVertical:'4%',
-  fontSize:20, color: '#620C31', letterSpacing: 1, fontFamily:'Izmir-Heavy'
+  fontSize:20, color: '#3e4144', letterSpacing: 1, fontFamily:'Izmir-Heavy'
 },
 
 azulServicios:{
   marginTop:'2%',
   marginHorizontal:'5%',
   marginVertical:'4%',
-  fontSize:20, color: '#620C31', letterSpacing: 1, fontFamily:'Izmir-Heavy'
+  fontSize:20, color: '#3e4144', letterSpacing: 1, fontFamily:'Izmir-Heavy'
 },
 rowEnd: {
   marginTop:'3%',
@@ -340,7 +340,7 @@ rowEnd: {
     marginLeft:10,
   },
   Touchable: {
-    backgroundColor: '#620C31',
+    backgroundColor: '#3e4144',
     borderRadius: 10,
     padding: 10,
     marginBottom: 20,

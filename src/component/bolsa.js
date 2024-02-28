@@ -15,7 +15,7 @@ const Bolsa = ( ) => {
  }
 
  const styles = StyleSheet.create({
-    topImage:{height: 182, width: 200 },    
+    topImage:{height: 200, width: 200 },    
  });
 
 export default Bolsa;

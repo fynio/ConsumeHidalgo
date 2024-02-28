@@ -92,7 +92,7 @@ const Tutoriales = ({ navigation }) => {
     const RenderItem = () => (
         <View style={{flex:1,   paddingVertical:20,  display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
           <Text style={{
-            color: '#620C31',
+            color: '#3e4144',
             paddingVertical: 20,
             fontSize: 21,
             textAlign: 'justify',

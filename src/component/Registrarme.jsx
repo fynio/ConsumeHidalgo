@@ -196,7 +196,7 @@ const Registrar = ( {navigation} ) => {
                         right={<TextInput.Icon 
                           name={showcontrasena ? "eye-off" : "eye"}
                           onPress={() => setcontrasena(!showcontrasena)}
-                          color="#620C31"/>}                    
+                          color="#3e4144"/>}                    
                       />
                       <HelperText type="error" visible={valPass}>
                         Escribe tu Contraseña!
@@ -214,7 +214,7 @@ const Registrar = ( {navigation} ) => {
                         right={<TextInput.Icon 
                           name={showcontrasena ? "eye-off" : "eye"}
                           onPress={() => setcontrasena(!showcontrasena)}
-                          color="#620C31"/>}                    
+                          color="#3e4144"/>}                    
                       />
                       {valPass?
                         <HelperText type="error" visible={valPass}>
@@ -231,7 +231,7 @@ const Registrar = ( {navigation} ) => {
                       <Text></Text>
                     <Text></Text>
                     <TouchableOpacity onPress={() => Linking.openURL("https://consume.hidalgo.gob.mx/politicas_de_privacidad.html")}>
-                    <Text style={{ textAlign:'right',  color: 'rgba(105, 28, 49, 1)' }}>Aviso de privacidad</Text>
+                    <Text style={{ textAlign:'right',  color: '#3e4144' }}>Aviso de privacidad</Text>
                     </TouchableOpacity>
 
                     <Button 
@@ -276,7 +276,7 @@ const styles = StyleSheet.create({
   tituloText:{ 
     marginVertical:'4%',
     textAlign:'center',
-    fontSize: 28, color: '#620C31', letterSpacing: 1
+    fontSize: 28, color: '#3e4144', letterSpacing: 1
 },
 
     titulo:{
@@ -290,11 +290,11 @@ const styles = StyleSheet.create({
     termo:{ flex:.25, justifyContent:'center'},
     cterm:{ flex:.8, marginHorizontal:'30%'},    
     texto:{ marginHorizontal:'10%', justifyContent:'center', marginTop:'2%', marginVertical:'10%'},
-    fs:{fontSize: 25, color: '#BC945B', letterSpacing: 1, textAlign:'center', marginTop:'1%'},
-    ftext:{fontSize: 16, marginTop:'2%', color: '#BC945B', letterSpacing: 1, textAlign:'center'},
-    get:{fontSize: 25, color: '#620C31', letterSpacing: 1, textAlign:'center'},
-    consume:{ fontSize: 30, color: '#BC945B', letterSpacing: 1, textAlign:'center',marginTop:'4%'},
-    hidalgo:{ fontSize: 30, color: '#620C31', letterSpacing: 1, textAlign:'center',marginTop:'4%'},    
+    fs:{fontSize: 25, color: '#6F7271', letterSpacing: 1, textAlign:'center', marginTop:'1%'},
+    ftext:{fontSize: 16, marginTop:'2%', color: '#6F7271', letterSpacing: 1, textAlign:'center'},
+    get:{fontSize: 25, color: '#3e4144', letterSpacing: 1, textAlign:'center'},
+    consume:{ fontSize: 30, color: '#6F7271', letterSpacing: 1, textAlign:'center',marginTop:'4%'},
+    hidalgo:{ fontSize: 30, color: '#3e4144', letterSpacing: 1, textAlign:'center',marginTop:'4%'},    
 });
 //export default function Acceso ({navigator});
 export default Registrar;

@@ -153,9 +153,9 @@ const Productos = ({ navigation }) => {
 
               
                      <Picker selectedValue={selectedCategoria} onValueChange={(itemValue, itemIndex) => { setSelectedCategoria(itemValue); getMunicipiosOP(itemValue); }}>
-                            <Picker.Item style={{ color: '#620C31' }} label="Todas las Categorias" value="" />
+                            <Picker.Item style={{ color: '#3e4144' }} label="Todas las Categorias" value="" />
                             {categorias.map(categ => (
-                                <Picker.Item style={{ color: '#620C31' }} key={categ.id_categoria} label={categ.nombre_categoria} value={categ.id_categoria} />
+                                <Picker.Item style={{ color: '#3e4144' }} key={categ.id_categoria} label={categ.nombre_categoria} value={categ.id_categoria} />
                             ))
                             }
                         </Picker> 
@@ -163,9 +163,9 @@ const Productos = ({ navigation }) => {
  
                     <View style={[styles.box]}>                        
                         <Picker selectedValue={selectedLanguage} onValueChange={(itemValue, itemIndex) => setSelectedLanguage(itemValue)}>
-                            <Picker.Item style={{ color: '#620C31' }} label="Todo el estado" value="" />
+                            <Picker.Item style={{ color: '#3e4144' }} label="Todo el estado" value="" />
                             {municipios.map(munic => (
-                                <Picker.Item style={{ color: '#620C31' }} key={munic.idmpio} label={munic.municipio} value={munic.idmpio} />
+                                <Picker.Item style={{ color: '#3e4144' }} key={munic.idmpio} label={munic.municipio} value={munic.idmpio} />
                             ))
                             }
                         </Picker>
@@ -199,7 +199,7 @@ const Productos = ({ navigation }) => {
             }
 
 
-            <ScrollView containerStyle={{backgroundColor:'white',marginTop:'5%', height:450, marginVertical:'2%',}} indicatorColor={'#620C31'} >
+            <ScrollView containerStyle={{backgroundColor:'white',marginTop:'5%', height:450, marginVertical:'2%',}} indicatorColor={'#3e4144'} >
                 {dataTarjeta.map((tarjeta) => {                    
                     return (
                         <MyProducto myId={tarjeta.tid} titulo={tarjeta.titulo} descripcion={tarjeta.descripcion} sucursales={tarjeta.sucursales} direcciones={tarjeta.direcciones} masinformacion={tarjeta.masinformacion} key={'contenedor' + tarjeta.tid} />

@@ -159,7 +159,7 @@ var [logo,setLogo] = useState({});
               flex: 1,
             }}>
           { negocio?<ScrollView style={{padding:20}}>
-            <Text  style={[{ color:'#620C31', flex:1, }]}>Revisando</Text>
+            <Text  style={[{ color:'#3e4144', flex:1, }]}>Revisando</Text>
             {logo?<Image
                 style={{width: '100%', height: 100, resizeMode: 'contain'}}
                 source={logo}
@@ -371,7 +371,7 @@ var [logo,setLogo] = useState({});
               renderItem={({item}) =>
               <View style={{ paddingLeft:'5%', width:'90%', marginBottom:15, flexDirection:'row'}}>
                 <Text style={[{ color:'black', padding:8, flex:3, }]}>{item.nombre_ps}</Text>
-                <Text style={[{ color:'#620C31', padding:8, flex:3, }]}>{item.nombre_propietario}</Text>
+                <Text style={[{ color:'#3e4144', padding:8, flex:3, }]}>{item.nombre_propietario}</Text>
                 <Text style={[{ color:'black', padding:8, flex:2, }]}>{item.nombre_categoria}</Text>
                 <Button 
                     style={{ maxHeight:50}}
@@ -424,30 +424,30 @@ const styles = StyleSheet.create({
   cabecera:{
     marginHorizontal:'5%',
     marginVertical:'4%',
-    fontSize: 28, color: '#BC945B', letterSpacing: 1, fontFamily:'Izmir-Heavy',
+    fontSize: 28, color: '#6F7271', letterSpacing: 1, fontFamily:'Izmir-Heavy',
   },
   cabecera2:{
     marginHorizontal:'5%',
     marginVertical:'4%',
-    fontSize: 28, color: '#BC945B', letterSpacing: 1, fontFamily:'Izmir-Heavy',    
+    fontSize: 28, color: '#6F7271', letterSpacing: 1, fontFamily:'Izmir-Heavy',    
   },
 azul:{
   marginHorizontal:'5%',
     marginVertical:'4%',
-    fontSize: 28, color: '#620C31', letterSpacing: 1, fontFamily:'Izmir-Heavy'
+    fontSize: 28, color: '#3e4144', letterSpacing: 1, fontFamily:'Izmir-Heavy'
 },
 azulProductos:{
   marginTop:'-2%',
   marginHorizontal:'5%',
   marginVertical:'4%',
-  fontSize:20, color: '#620C31', letterSpacing: 1, fontFamily:'Izmir-Heavy'
+  fontSize:20, color: '#3e4144', letterSpacing: 1, fontFamily:'Izmir-Heavy'
 },
 
 azulServicios:{
   marginTop:'2%',
   marginHorizontal:'5%',
   marginVertical:'4%',
-  fontSize:20, color: '#620C31', letterSpacing: 1, fontFamily:'Izmir-Heavy'
+  fontSize:20, color: '#3e4144', letterSpacing: 1, fontFamily:'Izmir-Heavy'
 },
 rowEnd: {
   marginTop:'3%',
@@ -473,7 +473,7 @@ rowEnd: {
     marginLeft:10,
   },
   Touchable: {
-    backgroundColor: '#620C31',
+    backgroundColor: '#3e4144',
     borderRadius: 10,
     padding: 10,
     marginBottom: 20,

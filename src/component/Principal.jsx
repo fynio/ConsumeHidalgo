@@ -56,7 +56,7 @@ const Principal = ( { navigation }) => {
                     <Text></Text>
                     <Text></Text>
                     <TouchableOpacity onPress={() => Linking.openURL("https://consume.hidalgo.gob.mx/politicas_de_privacidad.html")}>
-                    <Text style={{ textAlign:'right',  color: 'rgba(105, 28, 49, 1)' }}>Aviso de privacidad</Text>
+                    <Text style={{ textAlign:'right',  color: '#3e4144' }}>Aviso de privacidad</Text>
                     </TouchableOpacity>
 
                     <Text></Text>
@@ -67,7 +67,7 @@ const Principal = ( { navigation }) => {
 
                     <Text></Text>
                     <Text></Text> 
-                    <Button  onPress={() => navigation.navigate('Registrarme')} style={{backgroundColor:'rgba(188,149,91,1)'}} icon="account-plus" mode="contained" >
+                    <Button  onPress={() => navigation.navigate('Registrarme')} style={{backgroundColor:'#65727c'}} icon="account-plus" mode="contained" >
                     Registrarme
                     </Button>  
 

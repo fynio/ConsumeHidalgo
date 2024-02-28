@@ -52,7 +52,7 @@ const MyCard = (props) => {
                             }
                             <Text></Text>
 
-                    <Title style={{ fontWeight:'bold', textTransform:'uppercase',  textAlign:'center', width:'100%', color: 'rgba(160,33,66,1)', paddingHorizontal:20 }}>{props.titulo}</Title>
+                    <Title style={{ fontWeight:'bold', textTransform:'uppercase',  textAlign:'center', width:'100%', color: '#3e4144', paddingHorizontal:20 }}>{props.titulo}</Title>
                     <Text></Text>
                     <Text></Text>
                     <Paragraph style={{textAlign: 'justify', marginBottom: 10}}>{props.descripcion}</Paragraph>
@@ -60,7 +60,7 @@ const MyCard = (props) => {
                             {/* <View style={[styles.box, styles.box1]}> */}
                                 
                                 {props.sucursales.length?
-                                    <Text style={{ color: 'rgba(160,33,66,1)', fontWeight: 'bold', }}>Sucursales:</Text>
+                                    <Text style={{ color: '#3e4144', fontWeight: 'bold', }}>Sucursales:</Text>
                                 :
                                     <View></View>
                                 }                                
@@ -70,7 +70,7 @@ const MyCard = (props) => {
                                     );
                                 })}
                          
-                                <Text style={{ color: 'rgba(160,33,66,1)', fontWeight: 'bold', }}>Direccion:</Text>
+                                <Text style={{ color: '#3e4144', fontWeight: 'bold', }}>Direccion:</Text>
                                 {props.direcciones.map((direccion, i) => {
                                     return(
                                         <Text style={{ color: 'black', fontStyle: 'italic' }} key={'direccion' + i}>{direccion}</Text>
@@ -79,7 +79,7 @@ const MyCard = (props) => {
 
                                
                                {props.masinformacion.metodosentrega.length?
-                                <Text style={{ color: 'rgba(160,33,66,1)', fontWeight: 'bold', }}>Métodos de entrega:</Text>
+                                <Text style={{ color: '#3e4144', fontWeight: 'bold', }}>Métodos de entrega:</Text>
                                 :
                                 <View></View>
                                }                                
@@ -93,7 +93,7 @@ const MyCard = (props) => {
 <Text></Text>
 <Text></Text>
 <Text style={{width:'100%',  
-  backgroundColor:'rgb(188,149,91)'}}></Text>
+  backgroundColor:'#65727c'}}></Text>
 
 </View>
 
@@ -118,7 +118,7 @@ const MyCard = (props) => {
   
                     <View style={{width:'100%', position:'relative', zIndex:99}} >
                         <Button 
-                            style={{ position:'absolute', backgroundColor:'#620C31', minHeight:40, minWidth:40, right:0, height:40, width:40,  color:'orange'}}
+                            style={{ position:'absolute', backgroundColor:'#3e4144', minHeight:40, minWidth:40, right:0, height:40, width:40,  color:'orange'}}
                                 onPress={() => setModalVisible(!modalVisible)} >
                                 <Text style={{zIndex:999, color:'white'}}>X</Text>
                                 </Button>
@@ -142,7 +142,7 @@ const MyCard = (props) => {
                             <View style={styles.contenedor_contenidoModal}>
                                 <View style={styles.box}>
                                   {
-                                    props.masinformacion.horario.length>=1?<Text style={{ color: 'rgba(160,33,66,1)', fontWeight: 'bold', }}>Horario de Atención:</Text>
+                                    props.masinformacion.horario.length>=1?<Text style={{ color: '#3e4144', fontWeight: 'bold', }}>Horario de Atención:</Text>
                                     :<View></View>
                                 }
                                  
@@ -159,7 +159,7 @@ const MyCard = (props) => {
                                 </View>
                                 <View style={styles.box2}>
                                 {
-                                    props.masinformacion.metodospago.length>=1?  <Text style={{ color: 'rgba(160,33,66,1)', fontWeight: 'bold', }}>Métodos de Pago:</Text>
+                                    props.masinformacion.metodospago.length>=1?  <Text style={{ color: '#3e4144', fontWeight: 'bold', }}>Métodos de Pago:</Text>
                                     :<View></View>
                                 }
                                   
@@ -297,7 +297,7 @@ const styles = StyleSheet.create({
     centeredView: { flex: 1, justifyContent: "center", alignItems: "center", marginTop: 22 },
     modalView: { margin: 10, backgroundColor: "white", borderRadius: 20, padding: 10, alignItems: "center", shadowColor: "#000", shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.25, shadowRadius: 4, elevation: 5 },
     button: { borderRadius: 20, padding: 10, elevation: 2, marginTop: '5%', },
-    buttonClose: { backgroundColor: "rgba(105, 28, 49, 1)", },
+    buttonClose: { backgroundColor: "#3e4144", },
     textStyle: { color: "black", fontWeight: "bold", textAlign: "center" },
     imagenModal: { width: 200, height: 200, marginBottom: '1%', marginTop: '2%', },
 
@@ -316,12 +316,12 @@ const styles = StyleSheet.create({
         marginTop:10
     },
     red1: {
-        backgroundColor: 'rgba(105, 28, 49, 1)',
+        backgroundColor: '#3e4144',
         height: '100%',
         marginHorizontal: '2%',
     },
     red2: {
-        backgroundColor: 'rgba(221,201,163,1)',
+        backgroundColor: '#bdbdbd',
         height: '100%',
         marginHorizontal: '2%',
     },

@@ -101,7 +101,7 @@ const Contacto = ( { navigation } ) => {
  return (
    <ScrollView>
     <Text style={styles.cabecera}>
-      Contactanos
+      Contáctanos
     </Text>
 
     <Text style={styles.azul}>
@@ -127,7 +127,7 @@ const Contacto = ( { navigation } ) => {
 
     <View style={{marginHorizontal:'4%', marginTop:'5%'}}>
       <Text style={{color:'#393939'}}>
-        <Text style={{fontWeight:'bold', fontSize:16}}>Telefono: </Text>
+        <Text style={{fontWeight:'bold', fontSize:16}}>Teléfono: </Text>
         {telefono}
       </Text>
     </View>
@@ -154,7 +154,7 @@ const Contacto = ( { navigation } ) => {
     {facebook?
       <IconButton    
         icon="facebook"
-        color="#620C31"
+        color="#3e4144"
         size={40}
         onPress={ () => Linking.openURL ( facebook )}
       />
@@ -165,7 +165,7 @@ const Contacto = ( { navigation } ) => {
 {twitter?
   <IconButton
     icon="twitter"
-    color="#620C31"
+    color="#3e4144"
     size={40}
     onPress={() => Linking.openURL ( twitter )}
   />
@@ -177,7 +177,7 @@ const Contacto = ( { navigation } ) => {
   <IconButton
     flexDirection='row'
     icon="email"
-    color="#620C31"
+    color="#3e4144"
     size={40}
     onPress={() => Linking.openURL ( correo )}
   />
@@ -202,13 +202,13 @@ const styles = StyleSheet.create({
   cabecera:{
     marginHorizontal:'5%',
     marginVertical:'4%',
-    fontSize: 34, color: '#BC945B', letterSpacing: 1,
+    fontSize: 34, color: '#6F7271', letterSpacing: 1,
     textAlign:'center',
   },
   azul:{
     marginHorizontal:'5%',
     marginVertical:'2%',
-    fontSize: 16, color: '#620C31', letterSpacing: 1,
+    fontSize: 16, color: '#3e4144', letterSpacing: 1,
     textAlign:'center'
   },
 

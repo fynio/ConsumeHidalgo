@@ -88,7 +88,7 @@ const RecuperarContrasena = ( {navigation} ) => {
           style={{ marginTop: '5%'}}
           icon="send"
           mode="contained"
-          color="#620C31"
+          color="#3e4144"
           onPress={ () => signMail() }>
             Enviar Correo
           </Button>
@@ -115,11 +115,11 @@ const RecuperarContrasena = ( {navigation} ) => {
 };
 
 const styles = StyleSheet.create({
-    consume:{ fontSize: 30, color: '#BC945B', letterSpacing: 1, textAlign:'center'},
-    hidalgo:{ fontSize: 30, color: '#620C31', letterSpacing: 1, textAlign:'center'},    
+    consume:{ fontSize: 30, color: '#6F7271', letterSpacing: 1, textAlign:'center'},
+    hidalgo:{ fontSize: 30, color: '#3e4144', letterSpacing: 1, textAlign:'center'},    
     titulo:{marginTop:'3%',},
-    fs:{fontSize: 25, color: '#BC945B', letterSpacing: 1, textAlign:'center', marginTop:'7%'},
-    fc:{fontSize: 15, color: '#BC945B', letterSpacing: 1, textAlign:'center', marginTop:'7%'},
+    fs:{fontSize: 25, color: '#6F7271', letterSpacing: 1, textAlign:'center', marginTop:'7%'},
+    fc:{fontSize: 15, color: '#6F7271', letterSpacing: 1, textAlign:'center', marginTop:'7%'},
     contenedorBody:{flex: 1,justifyContent: "center", alignItems: "center"},
     input: {height: 20, width:'90%',marginRight:'4%',marginLeft:'4%',padding: 10,marginTop:'10%'},
 });

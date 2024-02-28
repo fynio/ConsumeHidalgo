@@ -38,7 +38,7 @@ function App({navigation}) {
       <Stack.Navigator   initialRouteName="InicioAdministracion"  screenOptions={{ 
         headerShown: false, 
         headerStyle: {
-            backgroundColor: '#620C31'
+            backgroundColor: '#3e4144'
         }, headerTintColor: '#fff', 
       }} >
         <Stack.Screen  name="Consume Hidalgo" component={Root} />
