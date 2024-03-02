@@ -15,7 +15,9 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": false
+      "supportsTablet": false,
+      "bundleIdentifier": "com.consume.ConsumeHidalgo",
+      "buildNumber":"5"
     },
     "android": {
       "adaptiveIcon": {
